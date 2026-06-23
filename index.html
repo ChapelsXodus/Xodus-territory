@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xodus Territory War</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Xodus Territory War</h1>
+    <p>Hover over a territory to view bosses, raids, unique drops, and point values.</p>
+  </header>
+
+  <main class="map-layout">
+    <section class="map-container">
+      <img src="territory-map.jpg" alt="Gielinor Territory Map" class="world-map" />
+
+      <div class="hover-zone great-kourend" data-region="greatKourend"></div>
+      <div class="hover-zone kebos-lowlands" data-region="kebosLowlands"></div>
+      <div class="hover-zone varlamore" data-region="varlamore"></div>
+      <div class="hover-zone fremennik" data-region="fremennik"></div>
+      <div class="hover-zone wilderness" data-region="wilderness"></div>
+      <div class="hover-zone tirannwn" data-region="tirannwn"></div>
+      <div class="hover-zone kandarin" data-region="kandarin"></div>
+      <div class="hover-zone asgarnia" data-region="asgarnia"></div>
+      <div class="hover-zone misthalin" data-region="misthalin"></div>
+      <div class="hover-zone morytania" data-region="morytania"></div>
+      <div class="hover-zone karamja" data-region="karamja"></div>
+      <div class="hover-zone desert" data-region="desert"></div>
+    </section>
+
+    <aside class="info-panel" id="infoPanel">
+      <h2>Select a Territory</h2>
+      <p>Hover over a region to see bosses, raids, drops, and point values.</p>
+    </aside>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
