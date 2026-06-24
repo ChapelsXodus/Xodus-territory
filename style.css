@@ -49,23 +49,38 @@ header p {
   display: block;
 }
 
-.hover-zone {
+.owner-zone {
   position: absolute;
   cursor: pointer;
   background: transparent;
+  border: 2px solid transparent;
+  transition: 0.2s ease;
 }
 
-.hover-zone:hover {
-  background: rgba(241, 199, 91, 0.08);
+.owner-zone:hover {
+  border-color: rgba(241, 199, 91, 0.8);
+  box-shadow: 0 0 10px rgba(241, 199, 91, 0.7);
 }
 
-/* Debug mode if needed */
-/*
-.hover-zone {
-  background: rgba(255, 0, 0, 0.22);
-  border: 2px solid yellow;
+.owner-neutral {
+  background: transparent;
 }
-*/
+
+.owner-team1 {
+  background: rgba(0, 120, 255, 0.25);
+}
+
+.owner-team2 {
+  background: rgba(255, 50, 50, 0.25);
+}
+
+.owner-team3 {
+  background: rgba(60, 220, 100, 0.25);
+}
+
+.owner-team4 {
+  background: rgba(180, 80, 255, 0.25);
+}
 
 .great-kourend {
   top: 6%;
@@ -172,6 +187,51 @@ header p {
 .info-panel p {
   color: #ddd;
   margin-top: 0;
+}
+
+.owner-label {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.owner-label.neutral {
+  color: #aaa;
+}
+
+.owner-label.team1 {
+  color: #4aa3ff;
+}
+
+.owner-label.team2 {
+  color: #ff6666;
+}
+
+.owner-label.team3 {
+  color: #62e68d;
+}
+
+.owner-label.team4 {
+  color: #c77dff;
+}
+
+.owner-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin: 10px 0 12px;
+}
+
+.owner-controls button {
+  background: #222;
+  color: #f5e6b8;
+  border: 1px solid #c89b3c;
+  padding: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.owner-controls button:hover {
+  background: #333;
 }
 
 .region-total {
