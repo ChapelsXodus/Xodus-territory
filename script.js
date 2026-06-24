@@ -1,440 +1,269 @@
-const regions = {
-  greatKourend: {
-    name: "Great Kourend",
-    bosses: [
-      {
-        name: "Chambers of Xeric",
-        drops: [
-          { item: "Twisted bow", points: 60 },
-          { item: "Kodai insignia", points: 35 },
-          { item: "Elder maul", points: 30 },
-          { item: "Dragon hunter crossbow", points: 25 },
-          { item: "Ancestral robe top", points: 22 },
-          { item: "Ancestral robe bottom", points: 22 },
-          { item: "Ancestral hat", points: 18 },
-          { item: "Dragon claws", points: 18 },
-          { item: "Dinh's bulwark", points: 14 },
-          { item: "Dexterous prayer scroll", points: 12 },
-          { item: "Arcane prayer scroll", points: 8 },
-          { item: "Twisted buckler", points: 8 }
-        ]
-      },
-      {
-        name: "Sarachnis",
-        drops: [
-          { item: "Sarachnis cudgel", points: 8 },
-          { item: "Jar of eyes", points: 8 }
-        ]
-      }
-    ]
-  },
+* {
+  box-sizing: border-box;
+}
 
-  kebosLowlands: {
-    name: "Kebos Lowlands",
-    bosses: [
-      {
-        name: "Alchemical Hydra",
-        drops: [
-          { item: "Hydra's claw", points: 35 },
-          { item: "Hydra leather", points: 18 },
-          { item: "Hydra tail", points: 10 },
-          { item: "Hydra's eye", points: 8 },
-          { item: "Hydra's fang", points: 8 },
-          { item: "Hydra's heart", points: 8 },
-          { item: "Dragon knife", points: 4 },
-          { item: "Dragon thrownaxe", points: 4 }
-        ]
-      }
-    ]
-  },
+body {
+  margin: 0;
+  background: #111;
+  color: #f5e6b8;
+  font-family: Arial, sans-serif;
+}
 
-  varlamore: {
-    name: "Varlamore",
-    bosses: [
-      {
-        name: "Fortis Colosseum",
-        drops: [
-          { item: "Dizana's quiver", points: 50 },
-          { item: "Sunfire fanatic helm", points: 12 },
-          { item: "Sunfire fanatic cuirass", points: 12 },
-          { item: "Sunfire fanatic chausses", points: 12 },
-          { item: "Echo crystal", points: 10 }
-        ]
-      },
-      {
-        name: "Hueycoatl",
-        drops: [
-          { item: "Dragon hunter wand", points: 25 },
-          { item: "Hueycoatl hide", points: 12 },
-          { item: "Tome of earth", points: 15 }
-        ]
-      },
-      {
-        name: "Yama",
-        drops: [
-          { item: "Oathplate helm", points: 20 },
-          { item: "Oathplate chest", points: 20 },
-          { item: "Oathplate legs", points: 20 }
-        ]
-      },
-      {
-        name: "Doom of Mokhaiotl",
-        drops: [
-          { item: "Mokhaiotl cloth", points: 18 },
-          { item: "Eye of Ayak", points: 20 },
-          { item: "Avernic treads", points: 16 }
-        ]
-      },
-      {
-        name: "Moons of Peril",
-        drops: [
-          { item: "Moon's Piece", points: 6 },
-        ]
-      }
-    ]
-  },
+header {
+  text-align: center;
+  padding: 18px;
+  background: #1b1b1b;
+  border-bottom: 2px solid #c89b3c;
+}
 
-  fremennik: {
-    name: "Fremennik Province",
-    bosses: [
-      {
-        name: "Vorkath",
-        drops: [
-          { item: "Vorkath's head", points: 8 },
-          { item: "Draconic visage", points: 20 },
-          { item: "Skeletal visage", points: 25 },
-          { item: "Jar of decay", points: 10 }
-        ]
-      },
-      {
-        name: "Dagannoth Kings",
-        drops: [
-          { item: "Berserker ring", points: 10 },
-          { item: "Archers ring", points: 8 },
-          { item: "Seers ring", points: 6 },
-          { item: "Warrior ring", points: 4 },
-          { item: "Dragon axe", points: 4 },
-          { item: "Seercull", points: 4 },
-          { item: "Mud battlestaff", points: 4 }
-        ]
-      },
-      {
-        name: "Phantom Muspah",
-        drops: [
-          { item: "Venator shard", points: 15 },
-          { item: "Ancient icon", points: 8 },
-          { item: "Frozen cache", points: 5 }
-        ]
-      }
-    ]
-  },
+header h1 {
+  margin: 0;
+  color: #f1c75b;
+}
 
-  wilderness: {
-    name: "Wilderness",
-    bosses: [
-      {
-        name: "King Black Dragon",
-        drops: [
-          { item: "Draconic visage", points: 20 },
-          { item: "Kbd heads", points: 8 }
-        ]
-      },
-      {
-        name: "Callisto / Artio",
-        drops: [
-          { item: "Voidwaker hilt", points: 30 },
-          { item: "Tyrannical ring", points: 10 },
-          { item: "Dragon pickaxe", points: 8 }
-        ]
-      },
-      {
-        name: "Vet'ion / Calvar'ion",
-        drops: [
-          { item: "Voidwaker blade", points: 30 },
-          { item: "Ring of the gods", points: 10 },
-          { item: "Dragon pickaxe", points: 8 }
-        ]
-      },
-      {
-        name: "Venenatis / Spindel",
-        drops: [
-          { item: "Voidwaker gem", points: 30 },
-          { item: "Treasonous ring", points: 10 },
-          { item: "Dragon pickaxe", points: 8 }
-        ]
-      },
-      {
-        name: "Voidwaker Completion",
-        drops: [
-          { item: "Voidwaker hilt + blade + gem", points: 30 }
-        ]
-      }
-    ]
-  },
+header p {
+  margin-top: 6px;
+  color: #ddd;
+  font-size: 0.95rem;
+}
 
-  tirannwn: {
-    name: "Tirannwn",
-    bosses: [
-      {
-        name: "Zulrah",
-        drops: [
-          { item: "Tanzanite fang", points: 12 },
-          { item: "Magic fang", points: 12 },
-          { item: "Serpentine visage", points: 12 },
-          { item: "Uncut onyx", points: 8 },
-          { item: "Jar of swamp", points: 8 }
-        ]
-      },
-      {
-        name: "Corrupted Gauntlet",
-        drops: [
-          { item: "Enhanced crystal weapon seed", points: 35 },
-          { item: "Crystal armour seed", points: 12 },
-          { item: "Crystal weapon seed", points: 8 }
-        ]
-      },
-      {
-        name: "Zalcano",
-        drops: [
-          { item: "Crystal tool seed", points: 12 },
-          { item: "Zalcano shard", points: 8 }
-        ]
-      }
-    ]
-  },
+.map-layout {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  align-items: flex-start;
+}
 
-  kandarin: {
-    name: "Kandarin",
-    bosses: [
-      {
-        name: "Kraken",
-        drops: [
-          { item: "Kraken tentacle", points: 8 },
-          { item: "Trident of the seas", points: 6 },
-          { item: "Jar of dirt", points: 8 }
-        ]
-      },
-      {
-        name: "Thermonuclear Smoke Devil",
-        drops: [
-          { item: "Occult necklace", points: 8 },
-          { item: "Smoke battlestaff", points: 6 },
-          { item: "Jar of smoke", points: 8 }
-        ]
-      }
-    ]
-  },
+.map-container {
+  position: relative;
+  width: 72%;
+  max-width: 1200px;
+  border: 3px solid #c89b3c;
+  background: #000;
+  flex-shrink: 0;
+}
 
-  asgarnia: {
-    name: "Asgarnia",
-    bosses: [
-      {
-        name: "General Graardor",
-        drops: [
-          { item: "Bandos chestplate", points: 12 },
-          { item: "Bandos tassets", points: 12 },
-          { item: "Bandos boots", points: 6 },
-          { item: "Bandos hilt", points: 10 }
-        ]
-      },
-      {
-        name: "Commander Zilyana",
-        drops: [
-          { item: "Armadyl crossbow", points: 15 },
-          { item: "Saradomin hilt", points: 10 },
-          { item: "Saradomin sword", points: 6 },
-          { item: "Saradomin's light", points: 6 }
-        ]
-      },
-      {
-        name: "Kree'arra",
-        drops: [
-          { item: "Armadyl helmet", points: 10 },
-          { item: "Armadyl chestplate", points: 12 },
-          { item: "Armadyl chainskirt", points: 12 },
-          { item: "Armadyl hilt", points: 10 }
-        ]
-      },
-      {
-        name: "K'ril Tsutsaroth",
-        drops: [
-          { item: "Zamorakian spear", points: 10 },
-          { item: "Staff of the dead", points: 10 },
-          { item: "Zamorak hilt", points: 10 },
-          { item: "Steam battlestaff", points: 6 }
-        ]
-      },
-      {
-        name: "Nex",
-        drops: [
-          { item: "Torva full helm", points: 25 },
-          { item: "Torva platebody", points: 30 },
-          { item: "Torva platelegs", points: 30 },
-          { item: "Nihil horn", points: 25 },
-          { item: "Zaryte vambraces", points: 20 },
-          { item: "Ancient hilt", points: 15 }
-        ]
-      },
-      {
-        name: "Cerberus",
-        drops: [
-          { item: "Primordial crystal", points: 18 },
-          { item: "Pegasian crystal", points: 15 },
-          { item: "Eternal crystal", points: 12 },
-          { item: "Smouldering stone", points: 8 }
-        ]
-      }
-    ]
-  },
+.world-map {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
-  misthalin: {
-    name: "Misthalin",
-    bosses: [
-      {
-        name: "Obor / Bryophyta",
-        drops: [
-          { item: "Hill giant club", points: 6 },
-          { item: "Bryophyta's essence", points: 8 }
-        ]
-      },
-      {
-        name: "Araxxor",
-        drops: [
-          { item: "Noxious halberd piece", points: 18 },
-          { item: "Amulet of rancour", points: 18 },
-          { item: "Araxyte venom sack", points: 8 }
-        ]
-      },
-      {
-        name: "Tormented Demons",
-        drops: [
-          { item: "Tormented synapse", points: 20 },
-          { item: "Burning claw", points: 10 }
-        ]
-      },
-      {
-        name: "Desert Treasure II Bosses",
-        drops: [
-          { item: "Ultor vestige", points: 20 },
-          { item: "Magus vestige", points: 20 },
-          { item: "Venator vestige", points: 20 },
-          { item: "Bellator vestige", points: 20 },
-          { item: "Virtus mask", points: 18 },
-          { item: "Virtus robe top", points: 18 },
-          { item: "Virtus robe bottom", points: 18 },
-          { item: "Any DT2 boss quartz", points: 12 },
-          { item: "Any Soulreaper axe piece", points: 20 }
-        ]
-      }
-    ]
-  },
+.owner-zone {
+  position: absolute;
+  cursor: pointer;
+  background: transparent;
+  border: 2px solid transparent;
+  transition: 0.2s ease;
+}
 
-  morytania: {
-    name: "Morytania",
-    bosses: [
-      {
-        name: "Theatre of Blood",
-        drops: [
-          { item: "Scythe of vitur", points: 60 },
-          { item: "Sanguinesti staff", points: 30 },
-          { item: "Ghrazi rapier", points: 25 },
-          { item: "Avernic defender hilt", points: 15 },
-          { item: "Justiciar faceguard", points: 12 },
-          { item: "Justiciar chestguard", points: 12 },
-          { item: "Justiciar legguards", points: 12 }
-        ]
-      },
-      {
-        name: "Grotesque Guardians",
-        drops: [
-          { item: "Granite gloves", points: 6 },
-          { item: "Granite ring", points: 6 },
-          { item: "Granite hammer", points: 8 },
-          { item: "Black tourmaline core", points: 10 },
-          { item: "Jar of stone", points: 8 }
-        ]
-      }
-    ]
-  },
+.owner-zone:hover {
+  border-color: rgba(241, 199, 91, 0.8);
+  box-shadow: 0 0 10px rgba(241, 199, 91, 0.7);
+}
 
-  karamja: {
-    name: "Karamja",
-    bosses: [
-      {
-        name: "TzHaar Challenges",
-        drops: [
-          { item: "Fire cape", points: 10 },
-          { item: "Infernal cape", points: 30 }
-        ]
-      }
-    ]
-  },
+.owner-neutral {
+  background: transparent;
+}
 
-  desert: {
-    name: "Kharidian Desert",
-    bosses: [
-      {
-        name: "Tombs of Amascut",
-        drops: [
-          { item: "Tumeken's shadow", points: 60 },
-          { item: "Masori body", points: 25 },
-          { item: "Masori chaps", points: 25 },
-          { item: "Masori mask", points: 20 },
-          { item: "Osmumten's fang", points: 15 },
-          { item: "Lightbearer", points: 10 },
-          { item: "Elidinis' ward", points: 10 },
-          { item: "Thread of elidinis", points: 5 }
-        ]
-      }
-    ]
-  }
-};
+.owner-team1 {
+  background: rgba(0, 120, 255, 0.25);
+}
 
-const infoPanel = document.getElementById("infoPanel");
-const hoverZones = document.querySelectorAll(".hover-zone");
+.owner-team2 {
+  background: rgba(255, 50, 50, 0.25);
+}
 
-hoverZones.forEach((zone) => {
-  zone.addEventListener("mouseenter", () => {
-    displayRegionInfo(zone.dataset.region);
-  });
+.owner-team3 {
+  background: rgba(60, 220, 100, 0.25);
+}
 
-  zone.addEventListener("click", () => {
-    displayRegionInfo(zone.dataset.region);
-  });
-});
+.owner-team4 {
+  background: rgba(180, 80, 255, 0.25);
+}
 
-function displayRegionInfo(regionKey) {
-  const region = regions[regionKey];
+.great-kourend {
+  top: 6%;
+  left: 7%;
+  width: 22%;
+  height: 32%;
+}
 
-  if (!region) {
-    infoPanel.innerHTML = `
-      <h2>Region Not Found</h2>
-      <p>No data exists for this territory yet.</p>
-    `;
-    return;
-  }
+.kebos-lowlands {
+  top: 22%;
+  left: 1%;
+  width: 13%;
+  height: 28%;
+}
 
-  const totalPoints = region.bosses.reduce((sum, boss) => {
-    return sum + boss.drops.reduce((dropSum, drop) => dropSum + drop.points, 0);
-  }, 0);
+.varlamore {
+  top: 51%;
+  left: 2%;
+  width: 23%;
+  height: 25%;
+}
 
-  let html = `
-    <h2>${region.name}</h2>
-    <p class="region-total">Total listed points: ${totalPoints}</p>
-  `;
+.fremennik {
+  top: 11%;
+  left: 39%;
+  width: 20%;
+  height: 25%;
+}
 
-  region.bosses.forEach((boss) => {
-    html += `
-      <div class="boss">
-        <h3>${boss.name}</h3>
-        <ul class="drop-list">
-          ${boss.drops
-            .map((drop) => `<li>${drop.item} — ${drop.points} pts</li>`)
-            .join("")}
-        </ul>
-      </div>
-    `;
-  });
+.wilderness {
+  top: 6%;
+  left: 58%;
+  width: 26%;
+  height: 33%;
+}
 
-  infoPanel.innerHTML = html;
+.tirannwn {
+  top: 40%;
+  left: 32%;
+  width: 14%;
+  height: 28%;
+}
+
+.kandarin {
+  top: 36%;
+  left: 44%;
+  width: 16%;
+  height: 32%;
+}
+
+.asgarnia {
+  top: 36%;
+  left: 57%;
+  width: 16%;
+  height: 27%;
+}
+
+.misthalin {
+  top: 36%;
+  left: 70%;
+  width: 16%;
+  height: 27%;
+}
+
+.morytania {
+  top: 36%;
+  left: 83%;
+  width: 15%;
+  height: 27%;
+}
+
+.karamja {
+  top: 62%;
+  left: 54%;
+  width: 18%;
+  height: 20%;
+}
+
+.desert {
+  top: 61%;
+  left: 70%;
+  width: 20%;
+  height: 31%;
+}
+
+.info-panel {
+  width: 28%;
+  min-width: 330px;
+  background: #1b1b1b;
+  border: 2px solid #c89b3c;
+  padding: 12px;
+  max-height: 84vh;
+  overflow-y: auto;
+  font-size: 0.82rem;
+}
+
+.info-panel h2 {
+  color: #f1c75b;
+  margin-top: 0;
+  margin-bottom: 6px;
+  font-size: 1.25rem;
+}
+
+.info-panel p {
+  color: #ddd;
+  margin-top: 0;
+}
+
+.owner-label {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.owner-label.neutral {
+  color: #aaa;
+}
+
+.owner-label.team1 {
+  color: #4aa3ff;
+}
+
+.owner-label.team2 {
+  color: #ff6666;
+}
+
+.owner-label.team3 {
+  color: #62e68d;
+}
+
+.owner-label.team4 {
+  color: #c77dff;
+}
+
+.owner-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin: 10px 0 12px;
+}
+
+.owner-controls button {
+  background: #222;
+  color: #f5e6b8;
+  border: 1px solid #c89b3c;
+  padding: 6px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.owner-controls button:hover {
+  background: #333;
+}
+
+.region-total {
+  color: #b56cff;
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+}
+
+.boss {
+  margin-top: 8px;
+  padding-top: 7px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.boss:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.boss h3 {
+  margin: 0 0 4px 0;
+  color: #fff;
+  font-size: 0.92rem;
+}
+
+.drop-list {
+  margin: 0;
+  padding-left: 15px;
+}
+
+.drop-list li {
+  margin-bottom: 2px;
+  line-height: 1.18;
 }
