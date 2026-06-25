@@ -9,30 +9,55 @@
 <body>
   <header>
     <h1>Xodus Territory War</h1>
-    <p>Hover a territory. Use the buttons to update ownership live for everyone.</p>
+    <p>Click a territory to view its bosses, drops, points, and current owner.</p>
   </header>
 
   <main class="map-layout">
     <section class="map-container">
       <img src="territory-map.jpg" alt="Gielinor Territory Map" class="world-map" />
 
-      <div class="owner-zone great-kourend" data-region="greatKourend"></div>
-      <div class="owner-zone kebos-lowlands" data-region="kebosLowlands"></div>
-      <div class="owner-zone varlamore" data-region="varlamore"></div>
-      <div class="owner-zone fremennik" data-region="fremennik"></div>
-      <div class="owner-zone wilderness" data-region="wilderness"></div>
-      <div class="owner-zone tirannwn" data-region="tirannwn"></div>
-      <div class="owner-zone kandarin" data-region="kandarin"></div>
-      <div class="owner-zone asgarnia" data-region="asgarnia"></div>
-      <div class="owner-zone misthalin" data-region="misthalin"></div>
-      <div class="owner-zone morytania" data-region="morytania"></div>
-      <div class="owner-zone karamja" data-region="karamja"></div>
-      <div class="owner-zone desert" data-region="desert"></div>
+      <svg class="territory-overlay" viewBox="0 0 1000 580" preserveAspectRatio="none">
+        <polygon class="owner-zone great-kourend" data-region="greatKourend"
+          points="102,217 106,174 112,155 100,144 82,105 88,70 98,61 124,53 124,36 154,16 173,11 199,16 228,28 268,65 276,77 268,93 254,102 261,140 252,167 268,196 266,218 245,240 240,249 211,252 204,232 182,223 163,247 124,247 102,217" />
+          
+          <polygon class="owner-zone kebos-lowlands" data-region="kebosLowlands"
+          points="112,155 105,173 100,216 90,230 69,234 12,236 3,213 11,192 7,166 18,116 35,97 43,86 67,84 84,87 83,108 100,145 112,155" />
+        
+          <polygon class="owner-zone varlamore" data-region="varlamore"
+          points="11,235 72,234 89,238 96,254 97,264 120,270 156,285 183,289 209,304 224,315 237,321 227,340 226,360 210,373 206,387 197,398 148,412 131,413 104,393 79,394 63,420 28,432 4,412 -1,375 15,331 6,307 7,283 11,235" />
+
+        <polygon class="owner-zone fremennik" data-region="fremennik"
+          points="602,190 608,57 581,75 564,73 542,67 530,53 488,61 422,65 381,61 360,46 334,43 320,62 325,79 341,95 373,117 417,122 422,137 440,140 458,173 496,178 525,200 558,173 602,185" />
+
+        <polygon class="owner-zone wilderness" data-region="wilderness"
+          points="650,53 671,40 781,43 786,52 791,43 814,47 815,80 812,95 814,118 821,127 819,138 812,165 807,175 799,197 691,196 684,205 644,174 639,166 643,144 638,138 635,119 649,95 649,52" />
+
+        <polygon class="owner-zone tirannwn" data-region="tirannwn"
+          points="384,386 415,376 429,360 439,290 405,232 394,233 388,238 372,226 345,236 349,249 363,260 359,262 365,286 343,295 343,327 360,375 387,385" />
+
+        <polygon class="owner-zone kandarin" data-region="kandarin"
+          points="407,233 439,289 430,360 415,377 386,386 349,387 334,413 333,448 365,474 416,484 431,443 465,445 473,462 524,458 549,420 551,391 546,372 560,341 565,314 576,295 581,269 590,246 602,239 614,231 607,213 585,180 559,174 526,202 498,180 459,173 443,141 413,138 397,174 405,232" />
+        
+          <polygon class="owner-zone asgarnia" data-region="asgarnia"
+          points="606,58 617,40 643,46 650,55 649,95 635,118 638,138 643,144 640,166 646,175 684,206 694,304 689,333 670,354 659,331 650,329 635,317 633,295 630,283 599,278 594,257 595,245 614,231 602,199 600,152 602,105 604,58" />
+          
+          <polygon class="owner-zone misthalin" data-region="misthalin"
+          points="799,198 717,198 691,197 684,210 695,306 678,366 709,390 730,350 760,343 765,319 761,295 800,290 812,279 820,232 800,197" />
+
+        <polygon class="owner-zone morytania" data-region="morytania"
+          points="800,196 821,230 812,275 822,283 824,333 853,347 922,334 951,298 950,249 902,180 873,170 853,176 819,177 799,195" />
+
+        <polygon class="owner-zone karamja" data-region="karamja"
+          points="668,436 665,365 649,355 657,343 653,331 628,318 625,292 613,284 596,293 580,305 561,327 546,369 566,404 566,432 547,458 523,513 531,551 559,555 566,513 593,515 644,515 663,433" />
+
+        <polygon class="owner-zone desert" data-region="desert"
+          points="708,390 730,349 759,342 765,318 760,295 799,289 812,277 822,283 827,333 853,347 863,358 853,415 846,473 821,500 812,513 812,538 798,538 774,527 751,528 717,536 709,451 715,427 715,405 714,391 708,389" />
+      </svg>
     </section>
 
     <aside class="info-panel" id="infoPanel">
       <h2>Select a Territory</h2>
-      <p>Hover over a region to see owner, bosses, drops, and point values.</p>
+      <p>Click a region to see owner, bosses, drops, and point values.</p>
     </aside>
   </main>
 
