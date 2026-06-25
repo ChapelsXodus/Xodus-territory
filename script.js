@@ -3,7 +3,8 @@ import {
   getFirestore,
   doc,
   onSnapshot,
-  updateDoc
+  updateDoc,
+  increment
 } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-firestore.js";
 
 /* =========================
@@ -23,7 +24,7 @@ const db = getFirestore(app);
 const stateRef = doc(db, "territoryWar", "state");
 
 /* =========================
-   TEAM NAMES / OWNERSHIP
+   TEAM NAMES
 ========================= */
 const teams = {
   neutral: "Neutral",
@@ -33,8 +34,12 @@ const teams = {
   team4: "Team 4"
 };
 
+const teamOrder = ["team1", "team2", "team3", "team4"];
+
 let territoryOwners = {};
+let territoryProgress = {};
 let selectedRegion = null;
+let editModeUnlocked = false;
 
 /* =========================
    REGION DATA
@@ -48,16 +53,16 @@ const regions = {
         drops: [
           { item: "Twisted bow", points: 60 },
           { item: "Kodai insignia", points: 35 },
-          { item: "Elder maul", points: 30 },
+          { item: "Elder maul", points: 32 },
           { item: "Dragon hunter crossbow", points: 25 },
-          { item: "Ancestral robe top", points: 22 },
-          { item: "Ancestral robe bottom", points: 22 },
+          { item: "Ancestral robe top", points: 24 },
+          { item: "Ancestral robe bottom", points: 24 },
+          { item: "Dragon claws", points: 22 },
           { item: "Ancestral hat", points: 18 },
-          { item: "Dragon claws", points: 18 },
-          { item: "Dinh's bulwark", points: 14 },
-          { item: "Dexterous prayer scroll", points: 12 },
-          { item: "Arcane prayer scroll", points: 8 },
-          { item: "Twisted buckler", points: 8 }
+          { item: "Dinh's bulwark", points: 15 },
+          { item: "Dexterous prayer scroll", points: 15 },
+          { item: "Arcane prayer scroll", points: 15 },
+          { item: "Twisted buckler", points: 15 }
         ]
       },
       {
@@ -84,6 +89,18 @@ const regions = {
           { item: "Hydra's heart", points: 8 },
           { item: "Dragon knife", points: 4 },
           { item: "Dragon thrownaxe", points: 4 }
+        ]
+      },
+      {
+        name: "Vardorvis",
+        drops: [
+          { item: "Ultor vestige", points: 25 },
+          { item: "Executioner's axe head", points: 22 },
+          { item: "Virtus mask", points: 18 },
+          { item: "Virtus robe top", points: 18 },
+          { item: "Virtus robe bottom", points: 18 },
+          { item: "Blood quartz", points: 12 },
+          { item: "Chromium ingot", points: 8 }
         ]
       }
     ]
@@ -129,18 +146,7 @@ const regions = {
       {
         name: "Moons of Peril",
         drops: [
-          { item: "Blood moon helm", points: 6 },
-          { item: "Blood moon chestplate", points: 6 },
-          { item: "Blood moon tassets", points: 6 },
-          { item: "Dual macuahuitl", points: 6 },
-          { item: "Blue moon helm", points: 6 },
-          { item: "Blue moon chestplate", points: 6 },
-          { item: "Blue moon tassets", points: 6 },
-          { item: "Blue moon spear", points: 6 },
-          { item: "Eclipse moon helm", points: 6 },
-          { item: "Eclipse moon chestplate", points: 6 },
-          { item: "Eclipse moon tassets", points: 6 },
-          { item: "Eclipse atlatl", points: 6 }
+          { item: "Moons piece", points: 6 }
         ]
       }
     ]
@@ -152,19 +158,19 @@ const regions = {
       {
         name: "Vorkath",
         drops: [
-          { item: "Vorkath's head", points: 8 },
-          { item: "Draconic visage", points: 20 },
           { item: "Skeletal visage", points: 25 },
-          { item: "Jar of decay", points: 10 }
+          { item: "Draconic visage", points: 22 },
+          { item: "Jar of decay", points: 12 },
+          { item: "Vorkath's head", points: 8 }
         ]
       },
       {
         name: "Dagannoth Kings",
         drops: [
           { item: "Berserker ring", points: 10 },
-          { item: "Archers ring", points: 8 },
-          { item: "Seers ring", points: 6 },
-          { item: "Warrior ring", points: 4 },
+          { item: "Archers ring", points: 10 },
+          { item: "Seers ring", points: 10 },
+          { item: "Warrior ring", points: 10 },
           { item: "Dragon axe", points: 4 },
           { item: "Seercull", points: 4 },
           { item: "Mud battlestaff", points: 4 }
@@ -177,6 +183,18 @@ const regions = {
           { item: "Ancient icon", points: 8 },
           { item: "Frozen cache", points: 5 }
         ]
+      },
+      {
+        name: "Duke Sucellus",
+        drops: [
+          { item: "Magus vestige", points: 25 },
+          { item: "Eye of the duke", points: 22 },
+          { item: "Virtus mask", points: 18 },
+          { item: "Virtus robe top", points: 18 },
+          { item: "Virtus robe bottom", points: 18 },
+          { item: "Ice quartz", points: 12 },
+          { item: "Chromium ingot", points: 8 }
+        ]
       }
     ]
   },
@@ -187,7 +205,7 @@ const regions = {
       {
         name: "King Black Dragon",
         drops: [
-          { item: "Draconic visage", points: 20 },
+          { item: "Draconic visage", points: 25 },
           { item: "Kbd heads", points: 8 }
         ]
       },
@@ -195,30 +213,27 @@ const regions = {
         name: "Callisto / Artio",
         drops: [
           { item: "Voidwaker hilt", points: 30 },
-          { item: "Tyrannical ring", points: 10 },
-          { item: "Dragon pickaxe", points: 8 }
+          { item: "Tyrannical ring", points: 12 },
+          { item: "Dragon pickaxe", points: 10 },
+          { item: "Dragon 2h sword", points: 6 }
         ]
       },
       {
         name: "Vet'ion / Calvar'ion",
         drops: [
           { item: "Voidwaker blade", points: 30 },
-          { item: "Ring of the gods", points: 10 },
-          { item: "Dragon pickaxe", points: 8 }
+          { item: "Ring of the gods", points: 12 },
+          { item: "Dragon pickaxe", points: 10 },
+          { item: "Dragon 2h sword", points: 6 }
         ]
       },
       {
         name: "Venenatis / Spindel",
         drops: [
           { item: "Voidwaker gem", points: 30 },
-          { item: "Treasonous ring", points: 10 },
-          { item: "Dragon pickaxe", points: 8 }
-        ]
-      },
-      {
-        name: "Voidwaker Completion",
-        drops: [
-          { item: "Voidwaker hilt + blade + gem", points: 30 }
+          { item: "Treasonous ring", points: 12 },
+          { item: "Dragon pickaxe", points: 10 },
+          { item: "Dragon 2h sword", points: 6 }
         ]
       }
     ]
@@ -261,17 +276,26 @@ const regions = {
       {
         name: "Kraken",
         drops: [
-          { item: "Kraken tentacle", points: 8 },
-          { item: "Trident of the seas", points: 6 },
+          { item: "Kraken tentacle", points: 10 },
+          { item: "Trident of the seas", points: 8 },
           { item: "Jar of dirt", points: 8 }
         ]
       },
       {
         name: "Thermonuclear Smoke Devil",
         drops: [
-          { item: "Occult necklace", points: 8 },
-          { item: "Smoke battlestaff", points: 6 },
+          { item: "Occult necklace", points: 12 },
+          { item: "Smoke battlestaff", points: 8 },
           { item: "Jar of smoke", points: 8 }
+        ]
+      },
+      {
+        name: "Demonic Gorillas",
+        drops: [
+          { item: "Zenyte shard", points: 18 },
+          { item: "Ballista piece", points: 8 },
+          { item: "Ballista spring", points: 8 },
+          { item: "Ballista limbs", points: 8 }
         ]
       }
     ]
@@ -335,6 +359,18 @@ const regions = {
           { item: "Eternal crystal", points: 12 },
           { item: "Smouldering stone", points: 8 }
         ]
+      },
+      {
+        name: "The Whisperer",
+        drops: [
+          { item: "Bellator vestige", points: 25 },
+          { item: "Siren's staff", points: 22 },
+          { item: "Virtus mask", points: 18 },
+          { item: "Virtus robe top", points: 18 },
+          { item: "Virtus robe bottom", points: 18 },
+          { item: "Shadow quartz", points: 12 },
+          { item: "Chromium ingot", points: 8 }
+        ]
       }
     ]
   },
@@ -365,17 +401,15 @@ const regions = {
         ]
       },
       {
-        name: "Desert Treasure II Bosses",
+        name: "The Leviathan",
         drops: [
-          { item: "Ultor vestige", points: 20 },
-          { item: "Magus vestige", points: 20 },
-          { item: "Venator vestige", points: 20 },
-          { item: "Bellator vestige", points: 20 },
+          { item: "Venator vestige", points: 25 },
+          { item: "Leviathan's lure", points: 22 },
           { item: "Virtus mask", points: 18 },
           { item: "Virtus robe top", points: 18 },
           { item: "Virtus robe bottom", points: 18 },
-          { item: "Any DT2 boss quartz", points: 12 },
-          { item: "Any Soulreaper axe piece", points: 20 }
+          { item: "Smoke quartz", points: 12 },
+          { item: "Chromium ingot", points: 8 }
         ]
       }
     ]
@@ -388,21 +422,19 @@ const regions = {
         name: "Theatre of Blood",
         drops: [
           { item: "Scythe of vitur", points: 60 },
-          { item: "Sanguinesti staff", points: 30 },
-          { item: "Ghrazi rapier", points: 25 },
-          { item: "Avernic defender hilt", points: 15 },
-          { item: "Justiciar faceguard", points: 12 },
-          { item: "Justiciar chestguard", points: 12 },
-          { item: "Justiciar legguards", points: 12 }
+          { item: "Sanguinesti staff", points: 35 },
+          { item: "Ghrazi rapier", points: 30 },
+          { item: "Avernic defender hilt", points: 20 },
+          { item: "Justiciar piece", points: 15 }
         ]
       },
       {
         name: "Grotesque Guardians",
         drops: [
+          { item: "Black tourmaline core", points: 10 },
+          { item: "Granite hammer", points: 8 },
           { item: "Granite gloves", points: 6 },
           { item: "Granite ring", points: 6 },
-          { item: "Granite hammer", points: 8 },
-          { item: "Black tourmaline core", points: 10 },
           { item: "Jar of stone", points: 8 }
         ]
       }
@@ -416,7 +448,7 @@ const regions = {
         name: "TzHaar Challenges",
         drops: [
           { item: "Fire cape", points: 10 },
-          { item: "Infernal cape", points: 30 }
+          { item: "Infernal cape", points: 35 }
         ]
       }
     ]
@@ -429,13 +461,19 @@ const regions = {
         name: "Tombs of Amascut",
         drops: [
           { item: "Tumeken's shadow", points: 60 },
-          { item: "Masori body", points: 25 },
-          { item: "Masori chaps", points: 25 },
-          { item: "Masori mask", points: 20 },
-          { item: "Osmumten's fang", points: 15 },
-          { item: "Lightbearer", points: 10 },
-          { item: "Elidinis' ward", points: 10 },
-          { item: "Thread of elidinis", points: 5 }
+          { item: "Masori piece", points: 20 },
+          { item: "Osmumten's fang", points: 18 },
+          { item: "Lightbearer", points: 15 },
+          { item: "Elidinis' ward", points: 15 },
+          { item: "Thread of elidinis", points: 8 }
+        ]
+      },
+      {
+        name: "Kalphite Queen",
+        drops: [
+          { item: "Dragon chainbody", points: 8 },
+          { item: "Dragon 2h sword", points: 8 },
+          { item: "Kq head", points: 6 }
         ]
       }
     ]
@@ -449,12 +487,139 @@ const infoPanel = document.getElementById("infoPanel");
 const ownerZones = document.querySelectorAll(".owner-zone");
 
 /* =========================
+   PROGRESS HELPERS
+========================= */
+function makeDropId(itemName) {
+  return itemName
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "_")
+    .replace(/^_+|_+$/g, "");
+}
+
+function getDropCount(regionKey, teamKey, dropId, progressSource = territoryProgress) {
+  return progressSource?.[regionKey]?.[teamKey]?.[dropId] || 0;
+}
+
+function getTeamRegionPoints(regionKey, teamKey, progressSource = territoryProgress) {
+  const region = regions[regionKey];
+  if (!region) return 0;
+
+  let total = 0;
+
+  region.bosses.forEach((boss) => {
+    boss.drops.forEach((drop) => {
+      const dropId = makeDropId(drop.item);
+      const count = getDropCount(regionKey, teamKey, dropId, progressSource);
+      total += count * drop.points;
+    });
+  });
+
+  return total;
+}
+
+function getTeamRegionUniqueCount(regionKey, teamKey, progressSource = territoryProgress) {
+  const region = regions[regionKey];
+  if (!region) return 0;
+
+  let total = 0;
+
+  region.bosses.forEach((boss) => {
+    boss.drops.forEach((drop) => {
+      const dropId = makeDropId(drop.item);
+      total += getDropCount(regionKey, teamKey, dropId, progressSource);
+    });
+  });
+
+  return total;
+}
+
+function getRegionController(regionKey, progressSource = territoryProgress, ownerSource = territoryOwners) {
+  const scores = teamOrder.map((teamKey) => ({
+    teamKey,
+    points: getTeamRegionPoints(regionKey, teamKey, progressSource)
+  }));
+
+  const highestScore = Math.max(...scores.map((score) => score.points));
+
+  if (highestScore <= 0) {
+    return "neutral";
+  }
+
+  const tiedTeams = scores
+    .filter((score) => score.points === highestScore)
+    .map((score) => score.teamKey);
+
+  if (tiedTeams.length === 1) {
+    return tiedTeams[0];
+  }
+
+  const currentOwner = ownerSource[regionKey] || "neutral";
+
+  if (tiedTeams.includes(currentOwner)) {
+    return currentOwner;
+  }
+
+  return "neutral";
+}
+
+function previewProgressChange(regionKey, teamKey, dropId, amount) {
+  const progressCopy = structuredClone(territoryProgress || {});
+
+  if (!progressCopy[regionKey]) progressCopy[regionKey] = {};
+  if (!progressCopy[regionKey][teamKey]) progressCopy[regionKey][teamKey] = {};
+
+  const current = progressCopy[regionKey][teamKey][dropId] || 0;
+  const next = Math.max(0, current + amount);
+
+  progressCopy[regionKey][teamKey][dropId] = next;
+
+  return progressCopy;
+}
+
+async function changeDropCount(regionKey, bossIndex, dropIndex, teamKey, amount) {
+  if (!editModeUnlocked) {
+    alert("Unlock leader edit mode first.");
+    return;
+  }
+
+  const drop = regions[regionKey]?.bosses?.[bossIndex]?.drops?.[dropIndex];
+  if (!drop) return;
+
+  const dropId = makeDropId(drop.item);
+  const currentCount = getDropCount(regionKey, teamKey, dropId);
+
+  if (amount < 0 && currentCount <= 0) return;
+
+  const previewProgress = previewProgressChange(regionKey, teamKey, dropId, amount);
+  const newController = getRegionController(regionKey, previewProgress, territoryOwners);
+
+  try {
+    await updateDoc(stateRef, {
+      [`progress.${regionKey}.${teamKey}.${dropId}`]: increment(amount),
+      [regionKey]: newController
+    });
+  } catch (error) {
+    console.error("Error updating drop count:", error);
+    alert("Failed to update drop count.");
+  }
+}
+
+window.changeDropCount = changeDropCount;
+
+/* =========================
    FIRESTORE LIVE LISTENER
 ========================= */
 onSnapshot(stateRef, (snapshot) => {
   if (snapshot.exists()) {
-    territoryOwners = snapshot.data();
+    const data = snapshot.data();
+
+    territoryProgress = data.progress || {};
+
+    territoryOwners = { ...data };
+    delete territoryOwners.progress;
+
     applyOwnershipColors();
+    updateSelectedRegionUI();
 
     if (selectedRegion) {
       displayRegionInfo(selectedRegion);
@@ -466,16 +631,24 @@ onSnapshot(stateRef, (snapshot) => {
    MAP EVENTS
 ========================= */
 ownerZones.forEach((zone) => {
-  zone.addEventListener("mouseenter", () => {
-    selectedRegion = zone.dataset.region;
-    displayRegionInfo(selectedRegion);
-  });
-
   zone.addEventListener("click", () => {
     selectedRegion = zone.dataset.region;
+    updateSelectedRegionUI();
     displayRegionInfo(selectedRegion);
   });
 });
+
+/* =========================
+   SELECTED REGION UI
+========================= */
+function updateSelectedRegionUI() {
+  ownerZones.forEach((zone) => {
+    zone.classList.toggle(
+      "selected-region",
+      zone.dataset.region === selectedRegion
+    );
+  });
+}
 
 /* =========================
    OWNERSHIP COLORS
@@ -483,7 +656,7 @@ ownerZones.forEach((zone) => {
 function applyOwnershipColors() {
   ownerZones.forEach((zone) => {
     const regionKey = zone.dataset.region;
-    const owner = territoryOwners[regionKey] || "neutral";
+    const owner = getRegionController(regionKey);
 
     zone.classList.remove(
       "owner-neutral",
@@ -498,25 +671,39 @@ function applyOwnershipColors() {
 }
 
 /* =========================
-   FIRESTORE UPDATE
+   EDIT MODE
 ========================= */
-async function setOwner(regionKey, owner) {
-  try {
-    await updateDoc(stateRef, {
-      [regionKey]: owner
-    });
-  } catch (error) {
-    console.error("Error updating owner:", error);
-    alert("Failed to update territory owner.");
+function unlockEditMode() {
+  const password = prompt("Enter leader password:");
+
+  if (password === "xodus123") {
+    editModeUnlocked = true;
+    if (selectedRegion) displayRegionInfo(selectedRegion);
+  } else {
+    alert("Incorrect password.");
   }
 }
 
-window.setOwner = setOwner;
+function lockEditMode() {
+  editModeUnlocked = false;
+  if (selectedRegion) displayRegionInfo(selectedRegion);
+}
+
+window.unlockEditMode = unlockEditMode;
+window.lockEditMode = lockEditMode;
 
 /* =========================
    INFO PANEL RENDER
 ========================= */
 function displayRegionInfo(regionKey) {
+  if (!regionKey) {
+    infoPanel.innerHTML = `
+      <h2>Select a Territory</h2>
+      <p>Click a region to see owner, bosses, drops, and point values.</p>
+    `;
+    return;
+  }
+
   const region = regions[regionKey];
 
   if (!region) {
@@ -527,36 +714,94 @@ function displayRegionInfo(regionKey) {
     return;
   }
 
-  const owner = territoryOwners[regionKey] || "neutral";
+  const owner = getRegionController(regionKey);
   const ownerName = teams[owner] || "Neutral";
 
-  const totalPoints = region.bosses.reduce((sum, boss) => {
+  const totalListedPoints = region.bosses.reduce((sum, boss) => {
     return sum + boss.drops.reduce((dropSum, drop) => dropSum + drop.points, 0);
   }, 0);
 
   let html = `
     <h2>${region.name}</h2>
-    <p class="owner-label ${owner}">Owner: ${ownerName}</p>
+    <p class="owner-label ${owner}">Controlled by: ${ownerName}</p>
 
-    <div class="owner-controls">
-      <button onclick="setOwner('${regionKey}', 'neutral')">Neutral</button>
-      <button onclick="setOwner('${regionKey}', 'team1')">Team 1</button>
-      <button onclick="setOwner('${regionKey}', 'team2')">Team 2</button>
-      <button onclick="setOwner('${regionKey}', 'team3')">Team 3</button>
-      <button onclick="setOwner('${regionKey}', 'team4')">Team 4</button>
+    <div class="edit-mode-actions">
+      ${
+        editModeUnlocked
+          ? `<button onclick="lockEditMode()">Lock Edit Mode</button>`
+          : `<button onclick="unlockEditMode()">Unlock Edit Mode</button>`
+      }
     </div>
-
-    <p class="region-total">Total listed points: ${totalPoints}</p>
   `;
 
-  region.bosses.forEach((boss) => {
+  if (editModeUnlocked) {
+    html += `<div class="edit-mode-banner">Leader Edit Mode Active</div>`;
+  }
+
+  html += `
+    <p class="region-total">Total listed points: ${totalListedPoints}</p>
+
+    <div class="team-region-points">
+      <h3>Region Progress</h3>
+      ${teamOrder
+        .map((teamKey) => {
+          const points = getTeamRegionPoints(regionKey, teamKey);
+          const uniques = getTeamRegionUniqueCount(regionKey, teamKey);
+
+          return `
+            <div class="team-region-row">
+              <strong>${teams[teamKey]}</strong>: ${uniques} uniques | ${points} pts
+            </div>
+          `;
+        })
+        .join("")}
+    </div>
+  `;
+
+  region.bosses.forEach((boss, bossIndex) => {
     html += `
       <div class="boss">
         <h3>${boss.name}</h3>
         <ul class="drop-list">
-          ${boss.drops
-            .map((drop) => `<li>${drop.item} — ${drop.points} pts</li>`)
-            .join("")}
+    `;
+
+    boss.drops.forEach((drop, dropIndex) => {
+      const dropId = makeDropId(drop.item);
+
+      html += `
+        <li>
+          <div class="drop-row">
+            <div class="drop-title"><strong>${drop.item}</strong> — ${drop.points} pts</div>
+      `;
+
+      teamOrder.forEach((teamKey) => {
+        const count = getDropCount(regionKey, teamKey, dropId);
+        const earnedPoints = count * drop.points;
+
+        html += `
+          <div class="drop-tracker">
+            <span>${teams[teamKey]}: ${count} earned | ${earnedPoints} pts</span>
+            ${
+              editModeUnlocked
+                ? `
+                  <div class="drop-buttons">
+                    <button onclick="changeDropCount('${regionKey}', ${bossIndex}, ${dropIndex}, '${teamKey}', -1)">-</button>
+                    <button onclick="changeDropCount('${regionKey}', ${bossIndex}, ${dropIndex}, '${teamKey}', 1)">+</button>
+                  </div>
+                `
+                : ""
+            }
+          </div>
+        `;
+      });
+
+      html += `
+          </div>
+        </li>
+      `;
+    });
+
+    html += `
         </ul>
       </div>
     `;
@@ -564,3 +809,50 @@ function displayRegionInfo(regionKey) {
 
   infoPanel.innerHTML = html;
 }
+
+/* =========================
+   TEMP SVG POINT TRACER
+   Hold SHIFT + click map points
+========================= */
+const tracerOverlay = document.querySelector(".territory-overlay");
+let tracePoints = [];
+
+if (tracerOverlay) {
+  tracerOverlay.addEventListener(
+    "click",
+    (event) => {
+      if (!event.shiftKey) return;
+
+      event.preventDefault();
+      event.stopPropagation();
+
+      const point = tracerOverlay.createSVGPoint();
+      point.x = event.clientX;
+      point.y = event.clientY;
+
+      const svgPoint = point.matrixTransform(
+        tracerOverlay.getScreenCTM().inverse()
+      );
+
+      const x = Math.round(svgPoint.x);
+      const y = Math.round(svgPoint.y);
+
+      tracePoints.push(`${x},${y}`);
+
+      console.clear();
+      console.log("Current polygon points:");
+      console.log(tracePoints.join(" "));
+    },
+    true
+  );
+}
+
+window.clearTracePoints = function () {
+  tracePoints = [];
+  console.clear();
+  console.log("Trace points cleared.");
+};
+
+window.showTracePoints = function () {
+  console.log(tracePoints.join(" "));
+};
