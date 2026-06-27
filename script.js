@@ -385,21 +385,7 @@ const regions = {
           { item: "Bryophyta's essence", points: 8 }
         ]
       },
-      {
-        name: "Araxxor",
-        drops: [
-          { item: "Noxious halberd piece", points: 18 },
-          { item: "Amulet of rancour", points: 18 },
-          { item: "Araxyte venom sack", points: 8 }
-        ]
-      },
-      {
-        name: "Tormented Demons",
-        drops: [
-          { item: "Tormented synapse", points: 20 },
-          { item: "Burning claw", points: 10 }
-        ]
-      },
+
       {
         name: "The Leviathan",
         drops: [
@@ -439,6 +425,21 @@ const regions = {
         ]
       }
     ]
+  },
+     {
+        name: "Araxxor",
+        drops: [
+          { item: "Noxious halberd piece", points: 18 },
+          { item: "Amulet of rancour", points: 18 },
+          { item: "Araxyte venom sack", points: 8 }
+        ]
+      },
+      {
+        name: "Tormented Demons",
+        drops: [
+          { item: "Tormented synapse", points: 20 },
+          { item: "Burning claw", points: 10 }
+        ]
   },
 
   karamja: {
