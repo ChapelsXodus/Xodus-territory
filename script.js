@@ -46,34 +46,41 @@ let editModeUnlocked = false;
 ========================= */
 const regions = {
   greatKourend: {
-    name: "Great Kourend",
-    bosses: [
-      {
-        name: "Chambers of Xeric",
-        drops: [
-          { item: "Twisted bow", points: 60 },
-          { item: "Kodai insignia", points: 35 },
-          { item: "Elder maul", points: 32 },
-          { item: "Dragon hunter crossbow", points: 25 },
-          { item: "Ancestral robe top", points: 24 },
-          { item: "Ancestral robe bottom", points: 24 },
-          { item: "Dragon claws", points: 22 },
-          { item: "Ancestral hat", points: 18 },
-          { item: "Dinh's bulwark", points: 15 },
-          { item: "Dexterous prayer scroll", points: 15 },
-          { item: "Arcane prayer scroll", points: 15 },
-          { item: "Twisted buckler", points: 15 }
-        ]
-      },
-      {
-        name: "Sarachnis",
-        drops: [
-          { item: "Sarachnis cudgel", points: 8 },
-          { item: "Jar of eyes", points: 8 }
-        ]
-      }
-    ]
-  },
+  name: "Great Kourend",
+  bosses: [
+    {
+      name: "Chambers of Xeric",
+      drops: [
+        { item: "Twisted bow", points: 60 },
+        { item: "Kodai insignia", points: 35 },
+        { item: "Elder maul", points: 32 },
+        { item: "Dragon hunter crossbow", points: 25 },
+        { item: "Ancestral robe top", points: 24 },
+        { item: "Ancestral robe bottom", points: 24 },
+        { item: "Dragon claws", points: 22 },
+        { item: "Ancestral hat", points: 18 },
+        { item: "Dinh's bulwark", points: 15 },
+        { item: "Dexterous prayer scroll", points: 15 },
+        { item: "Arcane prayer scroll", points: 15 },
+        { item: "Twisted buckler", points: 15 }
+      ]
+    },
+    {
+      name: "Sarachnis",
+      drops: [
+        { item: "Sarachnis cudgel", points: 8 },
+        { item: "Jar of eyes", points: 8 }
+      ]
+    },
+    {
+      name: "Skotizo",
+      drops: [
+        { item: "Dark claw", points: 6 },
+        { item: "Jar of darkness", points: 8 }
+      ]
+    }
+  ]
+},
 
   kebosLowlands: {
     name: "Kebos Lowlands",
@@ -209,6 +216,46 @@ const regions = {
           { item: "Kbd heads", points: 8 }
         ]
       },
+      {
+  name: "Chaos Elemental",
+  drops: [
+    { item: "Dragon pickaxe", points: 10 },
+    { item: "Dragon 2h sword", points: 6 }
+  ]
+},
+{
+  name: "Chaos Fanatic",
+  drops: [
+    { item: "Odium shard 1", points: 8 },
+    { item: "Malediction shard 1", points: 8 }
+  ]
+},
+{
+  name: "Crazy Archaeologist",
+  drops: [
+    { item: "Odium shard 2", points: 8 },
+    { item: "Malediction shard 2", points: 8 },
+    { item: "Fedora", points: 3 }
+  ]
+},
+{
+  name: "Scorpia",
+  drops: [
+    { item: "Odium shard 3", points: 8 },
+    { item: "Malediction shard 3", points: 8 },
+    { item: "Scorpia's offspring", points: 5 }
+  ]
+},
+{
+  name: "Corporeal Beast",
+  drops: [
+    { item: "Spectral sigil", points: 40 },
+    { item: "Arcane sigil", points: 40 },
+    { item: "Elysian sigil", points: 40 },
+    { item: "Holy elixir", points: 12 },
+    { item: "Spirit shield", points: 6 }
+  ]
+},
       {
         name: "Callisto / Artio",
         drops: [
@@ -351,6 +398,16 @@ const regions = {
           { item: "Ancient hilt", points: 15 }
         ]
       },
+     
+      {
+ 
+      name: "Giant Mole",
+      drops: [
+        { item: "Mole claw", points: 2 },
+        { item: "Mole skin", points: 2 }
+      ]
+    }, 
+          
       {
         name: "Cerberus",
         drops: [
@@ -375,7 +432,7 @@ const regions = {
     ]
   },
 
- misthalin: {
+misthalin: {
   name: "Misthalin",
   bosses: [
     {
@@ -383,6 +440,12 @@ const regions = {
       drops: [
         { item: "Hill giant club", points: 6 },
         { item: "Bryophyta's essence", points: 8 }
+      ]
+    },
+    {
+      name: "Scurrius",
+      drops: [
+        { item: "Scurrius spine", points: 8 }
       ]
     },
     {
@@ -406,7 +469,6 @@ const regions = {
     }
   ]
 },
-
 morytania: {
   name: "Morytania",
   bosses: [
@@ -431,28 +493,48 @@ morytania: {
       ]
     },
     {
+      name: "Barrows",
+      drops: [
+        { item: "Barrows piece", points: 2 }
+      ]
+    },
+    {
       name: "Araxxor",
       drops: [
         { item: "Noxious halberd piece", points: 18 },
         { item: "Amulet of rancour", points: 18 },
         { item: "Araxyte venom sack", points: 8 }
       ]
+    },
+    {
+      name: "Maggot King",
+      drops: [
+        { item: "Crimson kisten", points: 25 },
+        { item: "Necklace of Rupture", points: 25 }
+      ]
     }
   ]
 },
 
   karamja: {
-    name: "Karamja",
-    bosses: [
-      {
-        name: "TzHaar Challenges",
-        drops: [
-          { item: "Fire cape", points: 10 },
-          { item: "Infernal cape", points: 35 }
-        ]
-      }
-    ]
-  },
+  name: "Karamja",
+  bosses: [
+    {
+      name: "TzHaar Challenges",
+      drops: [
+        { item: "Fire cape", points: 10 },
+        { item: "Infernal cape", points: 35 }
+      ]
+    },
+    {
+      name: "Shellbane Gryphon",
+      drops: [
+        { item: "Belle's Folly", points: 18 },
+        { item: "Jar of feathers", points: 8 }
+      ]
+    }
+  ]
+},
 
   desert: {
     name: "Kharidian Desert",
