@@ -375,57 +375,71 @@ const regions = {
     ]
   },
 
-  misthalin: {
-    name: "Misthalin",
-    bosses: [
-      {
-        name: "Obor / Bryophyta",
-        drops: [
-          { item: "Hill giant club", points: 6 },
-          { item: "Bryophyta's essence", points: 8 }
-        ]
-      },
+ misthalin: {
+  name: "Misthalin",
+  bosses: [
+    {
+      name: "Obor / Bryophyta",
+      drops: [
+        { item: "Hill giant club", points: 6 },
+        { item: "Bryophyta's essence", points: 8 }
+      ]
+    },
+    {
+      name: "Tormented Demons",
+      drops: [
+        { item: "Tormented synapse", points: 20 },
+        { item: "Burning claw", points: 10 }
+      ]
+    },
+    {
+      name: "The Leviathan",
+      drops: [
+        { item: "Venator vestige", points: 25 },
+        { item: "Leviathan's lure", points: 22 },
+        { item: "Virtus mask", points: 18 },
+        { item: "Virtus robe top", points: 18 },
+        { item: "Virtus robe bottom", points: 18 },
+        { item: "Smoke quartz", points: 12 },
+        { item: "Chromium ingot", points: 8 }
+      ]
+    }
+  ]
+},
 
-      {
-        name: "The Leviathan",
-        drops: [
-          { item: "Venator vestige", points: 25 },
-          { item: "Leviathan's lure", points: 22 },
-          { item: "Virtus mask", points: 18 },
-          { item: "Virtus robe top", points: 18 },
-          { item: "Virtus robe bottom", points: 18 },
-          { item: "Smoke quartz", points: 12 },
-          { item: "Chromium ingot", points: 8 }
-        ]
-      }
-    ]
-  },
-
-  morytania: {
-    name: "Morytania",
-    bosses: [
-      {
-        name: "Theatre of Blood",
-        drops: [
-          { item: "Scythe of vitur", points: 60 },
-          { item: "Sanguinesti staff", points: 35 },
-          { item: "Ghrazi rapier", points: 30 },
-          { item: "Avernic defender hilt", points: 20 },
-          { item: "Justiciar piece", points: 15 }
-        ]
-      },
-      {
-        name: "Grotesque Guardians",
-        drops: [
-          { item: "Black tourmaline core", points: 10 },
-          { item: "Granite hammer", points: 8 },
-          { item: "Granite gloves", points: 6 },
-          { item: "Granite ring", points: 6 },
-          { item: "Jar of stone", points: 8 }
-        ]
-      }
-    ]
-  },
+morytania: {
+  name: "Morytania",
+  bosses: [
+    {
+      name: "Theatre of Blood",
+      drops: [
+        { item: "Scythe of vitur", points: 60 },
+        { item: "Sanguinesti staff", points: 35 },
+        { item: "Ghrazi rapier", points: 30 },
+        { item: "Avernic defender hilt", points: 20 },
+        { item: "Justiciar piece", points: 15 }
+      ]
+    },
+    {
+      name: "Grotesque Guardians",
+      drops: [
+        { item: "Black tourmaline core", points: 10 },
+        { item: "Granite hammer", points: 8 },
+        { item: "Granite gloves", points: 6 },
+        { item: "Granite ring", points: 6 },
+        { item: "Jar of stone", points: 8 }
+      ]
+    },
+    {
+      name: "Araxxor",
+      drops: [
+        { item: "Noxious halberd piece", points: 18 },
+        { item: "Amulet of rancour", points: 18 },
+        { item: "Araxyte venom sack", points: 8 }
+      ]
+    }
+  ]
+},
      {
         name: "Araxxor",
         drops: [
