@@ -443,6 +443,14 @@ misthalin: {
       ]
     },
     {
+  name: "Brutus",
+  drops: [
+    { item: "Mooleta", points: 4 },
+    { item: "Bottomless milk bucket", points: 6 },
+    { item: "Cow slippers", points: 6 }
+  ]
+},
+    {
       name: "Scurrius",
       drops: [
         { item: "Scurrius spine", points: 8 }
