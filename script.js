@@ -426,8 +426,8 @@ greatKourend: {
     {
       name: "Giant Mole",
       drops: [
-        { item: "Mole claw", points: 2 },
-        { item: "Mole skin", points: 2 }
+        { item: "Immaculate Mole skin", points: 5 },
+       
       ]
     },
     {
