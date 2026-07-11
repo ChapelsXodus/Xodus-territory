@@ -28,13 +28,11 @@ const stateRef = doc(db, "territoryWar", "state");
 ========================= */
 const teams = {
   neutral: "Neutral",
-  team1: "Team 1",
-  team2: "Team 2",
-  team3: "Team 3",
-  team4: "Team 4"
+  team1: "Blue Team",
+  team2: "Red Team"
 };
 
-const teamOrder = ["team1", "team2", "team3", "team4"];
+const teamOrder = ["team1", "team2"];
 
 let territoryOwners = {};
 let territoryProgress = {};
@@ -45,7 +43,7 @@ let editModeUnlocked = false;
    REGION DATA
 ========================= */
 const regions = {
-  greatKourend: {
+greatKourend: {
   name: "Great Kourend",
   bosses: [
     {
@@ -53,384 +51,408 @@ const regions = {
       drops: [
         { item: "Twisted bow", points: 60 },
         { item: "Kodai insignia", points: 35 },
-        { item: "Elder maul", points: 32 },
+        { item: "Elder maul", points: 30 },
         { item: "Dragon hunter crossbow", points: 25 },
-        { item: "Ancestral robe top", points: 24 },
-        { item: "Ancestral robe bottom", points: 24 },
-        { item: "Dragon claws", points: 22 },
-        { item: "Ancestral hat", points: 18 },
+        { item: "Ancestral robe top", points: 25 },
+        { item: "Ancestral robe bottom", points: 25 },
+        { item: "Dragon claws", points: 25 },
+        { item: "Ancestral hat", points: 20 },
         { item: "Dinh's bulwark", points: 15 },
         { item: "Dexterous prayer scroll", points: 15 },
         { item: "Arcane prayer scroll", points: 15 },
         { item: "Twisted buckler", points: 15 }
       ]
     },
+
     {
       name: "Sarachnis",
       drops: [
-        { item: "Sarachnis cudgel", points: 8 },
+        { item: "Sarachnis cudgel", points: 10 },
         { item: "Jar of eyes", points: 8 }
       ]
     },
+
     {
       name: "Skotizo",
       drops: [
-        { item: "Dark claw", points: 6 },
-        { item: "Jar of darkness", points: 8 }
+        { item: "Dark claw", points: 8 },
+        { item: "Jar of darkness", points: 10 }
+      ]
+    },
+
+    {
+      name: "Wintertodt",
+      drops: [
+        { item: "Pyromancer piece", points: 2 },
+        { item: "Bruma torch", points: 4 },
+        { item: "Warm gloves", points: 2 },
+        { item: "Tome of fire", points: 15 },
+        { item: "Dragon axe", points: 20 }
       ]
     }
   ]
 },
 
   kebosLowlands: {
-    name: "Kebos Lowlands",
-    bosses: [
-      {
-        name: "Alchemical Hydra",
-        drops: [
-          { item: "Hydra's claw", points: 35 },
-          { item: "Hydra leather", points: 18 },
-          { item: "Hydra tail", points: 10 },
-          { item: "Hydra's eye", points: 8 },
-          { item: "Hydra's fang", points: 8 },
-          { item: "Hydra's heart", points: 8 },
-          { item: "Dragon knife", points: 4 },
-          { item: "Dragon thrownaxe", points: 4 }
-        ]
-      },
-      {
-        name: "Vardorvis",
-        drops: [
-          { item: "Ultor vestige", points: 25 },
-          { item: "Executioner's axe head", points: 22 },
-          { item: "Virtus mask", points: 18 },
-          { item: "Virtus robe top", points: 18 },
-          { item: "Virtus robe bottom", points: 18 },
-          { item: "Blood quartz", points: 12 },
-          { item: "Chromium ingot", points: 8 }
-        ]
-      }
-    ]
-  },
+  name: "Kebos Lowlands",
+  bosses: [
+    {
+      name: "Alchemical Hydra",
+      drops: [
+        { item: "Hydra's claw", points: 25 },
+        { item: "Hydra leather", points: 18 },
+        { item: "Hydra tail", points: 18 },
+        { item: "Hydra's eye", points: 8 },
+        { item: "Hydra's fang", points: 8 },
+        { item: "Hydra's heart", points: 8 },
+        { item: "Dragon knife", points: 6 },
+        { item: "Dragon thrownaxe", points: 6 }
+      ]
+    },
+    {
+      name: "Vardorvis",
+      drops: [
+        { item: "Ultor vestige", points: 25 },
+        { item: "Executioner's axe head", points: 25 },
+        { item: "Virtus mask", points: 25 },
+        { item: "Virtus robe top", points: 25 },
+        { item: "Virtus robe bottom", points: 25 },
+        { item: "Blood quartz", points: 8 },
+        { item: "Chromium ingot", points: 8 }
+      ]
+    }
+  ]
+},
 
   varlamore: {
-    name: "Varlamore",
-    bosses: [
-      {
-        name: "Fortis Colosseum",
-        drops: [
-          { item: "Dizana's quiver", points: 50 },
-          { item: "Sunfire fanatic helm", points: 12 },
-          { item: "Sunfire fanatic cuirass", points: 12 },
-          { item: "Sunfire fanatic chausses", points: 12 },
-          { item: "Echo crystal", points: 10 }
-        ]
-      },
-      {
-        name: "Hueycoatl",
-        drops: [
-          { item: "Dragon hunter wand", points: 25 },
-          { item: "Hueycoatl hide", points: 12 },
-          { item: "Tome of earth", points: 15 }
-        ]
-      },
-      {
-        name: "Yama",
-        drops: [
-          { item: "Oathplate helm", points: 20 },
-          { item: "Oathplate chest", points: 20 },
-          { item: "Oathplate legs", points: 20 }
-        ]
-      },
-      {
-        name: "Doom of Mokhaiotl",
-        drops: [
-          { item: "Mokhaiotl cloth", points: 18 },
-          { item: "Eye of Ayak", points: 20 },
-          { item: "Avernic treads", points: 16 }
-        ]
-      },
-      {
-        name: "Moons of Peril",
-        drops: [
-          { item: "Moons piece", points: 6 }
-        ]
-      }
-    ]
-  },
+  name: "Varlamore",
+  bosses: [
+    {
+      name: "Fortis Colosseum",
+      drops: [
+        { item: "Smol heredit", points: 35 },
+        { item: "Tonalztics of ralos", points: 35 },
+        { item: "Sunfire fanatic helm", points: 15 },
+        { item: "Sunfire fanatic cuirass", points: 15 },
+        { item: "Sunfire fanatic chausses", points: 15 },
+        { item: "Echo crystal", points: 12 }
+      ]
+    },
+    {
+      name: "Hueycoatl",
+      drops: [
+        { item: "Dragon hunter wand", points: 25 },
+        { item: "Tome of earth", points: 15 },
+        { item: "Hueycoatl hide", points: 12 }
+      ]
+    },
+    {
+      name: "Yama",
+      drops: [
+        { item: "Oathplate helm", points: 25 },
+        { item: "Oathplate chest", points: 25 },
+        { item: "Oathplate legs", points: 25 }
+      ]
+    },
+    {
+      name: "Doom of Mokhaiotl",
+      drops: [
+        { item: "Eye of Ayak", points: 30 },
+        { item: "Avernic treads", points: 30 },
+        { item: "Confliction gauntlets", points: 30 },
+        { item: "Mokhaiotl cloth", points: 20 }
+      ]
+    },
+    {
+      name: "Moons of Peril",
+      drops: [
+        { item: "Moons piece", points: 8 }
+      ]
+    },
+    {
+      name: "Amoxliatl",
+      drops: [
+        { item: "Glacial temotli", points: 15 },
+        { item: "Pendant of ates (inert)", points: 6 }
+      ]
+    }
+  ]
+},
 
   fremennik: {
-    name: "Fremennik Province",
-    bosses: [
-      {
-        name: "Vorkath",
-        drops: [
-          { item: "Skeletal visage", points: 25 },
-          { item: "Draconic visage", points: 22 },
-          { item: "Jar of decay", points: 12 },
-          { item: "Vorkath's head", points: 8 }
-        ]
-      },
-      {
-        name: "Dagannoth Kings",
-        drops: [
-          { item: "Berserker ring", points: 10 },
-          { item: "Archers ring", points: 10 },
-          { item: "Seers ring", points: 10 },
-          { item: "Warrior ring", points: 10 },
-          { item: "Dragon axe", points: 4 },
-          { item: "Seercull", points: 4 },
-          { item: "Mud battlestaff", points: 4 }
-        ]
-      },
-      {
-        name: "Phantom Muspah",
-        drops: [
-          { item: "Venator shard", points: 15 },
-          { item: "Ancient icon", points: 8 },
-          { item: "Frozen cache", points: 5 }
-        ]
-      },
-      {
-        name: "Duke Sucellus",
-        drops: [
-          { item: "Magus vestige", points: 25 },
-          { item: "Eye of the duke", points: 22 },
-          { item: "Virtus mask", points: 18 },
-          { item: "Virtus robe top", points: 18 },
-          { item: "Virtus robe bottom", points: 18 },
-          { item: "Ice quartz", points: 12 },
-          { item: "Chromium ingot", points: 8 }
-        ]
-      }
-    ]
-  },
+  name: "Fremennik Province",
+  bosses: [
+    {
+      name: "Vorkath",
+      drops: [
+        { item: "Skeletal visage", points: 35 },
+        { item: "Draconic visage", points: 35 },
+        { item: "Jar of decay", points: 30 }
+      ]
+    },
+    {
+      name: "Dagannoth Kings",
+      drops: [
+        { item: "Berserker ring", points: 10 },
+        { item: "Archers ring", points: 10 },
+        { item: "Seers ring", points: 10 },
+        { item: "Warrior ring", points: 10 },
+        { item: "Dragon axe", points: 6 },
+        { item: "Seercull", points: 6 },
+        { item: "Mud battlestaff", points: 6 }
+      ]
+    },
+    {
+      name: "Phantom Muspah",
+      drops: [
+        { item: "Venator shard", points: 15 },
+        { item: "Ancient icon", points: 8 },
+        { item: "Frozen cache", points: 4 }
+      ]
+    },
+    {
+      name: "Duke Sucellus",
+      drops: [
+        { item: "Magus vestige", points: 25 },
+        { item: "Eye of the duke", points: 25 },
+        { item: "Virtus mask", points: 25 },
+        { item: "Virtus robe top", points: 25 },
+        { item: "Virtus robe bottom", points: 25 },
+        { item: "Ice quartz", points: 8 },
+        { item: "Chromium ingot", points: 8 }
+      ]
+    }
+  ]
+},
 
   wilderness: {
-    name: "Wilderness",
-    bosses: [
-      {
-        name: "King Black Dragon",
-        drops: [
-          { item: "Draconic visage", points: 25 },
-          { item: "Kbd heads", points: 8 }
-        ]
-      },
-      {
-  name: "Chaos Elemental",
-  drops: [
-    { item: "Dragon pickaxe", points: 10 },
-    { item: "Dragon 2h sword", points: 6 }
+  name: "Wilderness",
+  bosses: [
+    {
+      name: "King Black Dragon",
+      drops: [
+        { item: "Draconic visage", points: 35 },
+        { item: "Kbd heads", points: 8 }
+      ]
+    },
+    {
+      name: "Chaos Elemental",
+      drops: [
+        { item: "Dragon pickaxe", points: 10 },
+        { item: "Dragon 2h sword", points: 8 }
+      ]
+    },
+    {
+      name: "Chaos Fanatic",
+      drops: [
+        { item: "Odium shard 1", points: 10 },
+        { item: "Malediction shard 1", points: 10 }
+      ]
+    },
+    {
+      name: "Crazy Archaeologist",
+      drops: [
+        { item: "Odium shard 2", points: 10 },
+        { item: "Malediction shard 2", points: 10 },
+        { item: "Fedora", points: 4 }
+      ]
+    },
+    {
+      name: "Scorpia",
+      drops: [
+        { item: "Odium shard 3", points: 10 },
+        { item: "Malediction shard 3", points: 10 }
+      ]
+    },
+    {
+      name: "Corporeal Beast",
+      drops: [
+        { item: "Spectral sigil", points: 40 },
+        { item: "Arcane sigil", points: 40 },
+        { item: "Elysian sigil", points: 40 },
+        { item: "Holy elixir", points: 12 },
+        { item: "Spirit shield", points: 6 }
+      ]
+    },
+    {
+      name: "Callisto / Artio",
+      drops: [
+        { item: "Voidwaker hilt", points: 25 },
+        { item: "Tyrannical ring", points: 12 },
+        { item: "Dragon pickaxe", points: 10 },
+        { item: "Dragon 2h sword", points: 6 }
+      ]
+    },
+    {
+      name: "Vet'ion / Calvar'ion",
+      drops: [
+        { item: "Voidwaker blade", points: 25 },
+        { item: "Ring of the gods", points: 12 },
+        { item: "Dragon pickaxe", points: 10 },
+        { item: "Dragon 2h sword", points: 6 }
+      ]
+    },
+    {
+      name: "Venenatis / Spindel",
+      drops: [
+        { item: "Voidwaker gem", points: 25 },
+        { item: "Treasonous ring", points: 12 },
+        { item: "Dragon pickaxe", points: 10 },
+        { item: "Dragon 2h sword", points: 6 }
+      ]
+    },
+    {
+      name: "Revenants",
+      drops: [
+        { item: "Craw's bow", points: 30 },
+        { item: "Viggora's chainmace", points: 30 },
+        { item: "Thammaron's sceptre", points: 30 },
+        { item: "Amulet of avarice", points: 15 },
+        { item: "Ancient crystal", points: 10 }
+      ]
+    }
   ]
 },
-{
-  name: "Chaos Fanatic",
-  drops: [
-    { item: "Odium shard 1", points: 8 },
-    { item: "Malediction shard 1", points: 8 }
-  ]
-},
-{
-  name: "Crazy Archaeologist",
-  drops: [
-    { item: "Odium shard 2", points: 8 },
-    { item: "Malediction shard 2", points: 8 },
-    { item: "Fedora", points: 3 }
-  ]
-},
-{
-  name: "Scorpia",
-  drops: [
-    { item: "Odium shard 3", points: 8 },
-    { item: "Malediction shard 3", points: 8 },
-    { item: "Scorpia's offspring", points: 5 }
-  ]
-},
-{
-  name: "Corporeal Beast",
-  drops: [
-    { item: "Spectral sigil", points: 40 },
-    { item: "Arcane sigil", points: 40 },
-    { item: "Elysian sigil", points: 40 },
-    { item: "Holy elixir", points: 12 },
-    { item: "Spirit shield", points: 6 }
-  ]
-},
-      {
-        name: "Callisto / Artio",
-        drops: [
-          { item: "Voidwaker hilt", points: 30 },
-          { item: "Tyrannical ring", points: 12 },
-          { item: "Dragon pickaxe", points: 10 },
-          { item: "Dragon 2h sword", points: 6 }
-        ]
-      },
-      {
-        name: "Vet'ion / Calvar'ion",
-        drops: [
-          { item: "Voidwaker blade", points: 30 },
-          { item: "Ring of the gods", points: 12 },
-          { item: "Dragon pickaxe", points: 10 },
-          { item: "Dragon 2h sword", points: 6 }
-        ]
-      },
-      {
-        name: "Venenatis / Spindel",
-        drops: [
-          { item: "Voidwaker gem", points: 30 },
-          { item: "Treasonous ring", points: 12 },
-          { item: "Dragon pickaxe", points: 10 },
-          { item: "Dragon 2h sword", points: 6 }
-        ]
-      }
-    ]
-  },
 
-  tirannwn: {
-    name: "Tirannwn",
-    bosses: [
-      {
-        name: "Zulrah",
-        drops: [
-          { item: "Tanzanite fang", points: 12 },
-          { item: "Magic fang", points: 12 },
-          { item: "Serpentine visage", points: 12 },
-          { item: "Uncut onyx", points: 8 },
-          { item: "Jar of swamp", points: 8 }
-        ]
-      },
-      {
-        name: "Corrupted Gauntlet",
-        drops: [
-          { item: "Enhanced crystal weapon seed", points: 35 },
-          { item: "Crystal armour seed", points: 12 },
-          { item: "Crystal weapon seed", points: 8 }
-        ]
-      },
-      {
-        name: "Zalcano",
-        drops: [
-          { item: "Crystal tool seed", points: 12 },
-          { item: "Zalcano shard", points: 8 }
-        ]
-      }
-    ]
-  },
+ tirannwn: {
+  name: "Tirannwn",
+  bosses: [
+    {
+      name: "Zulrah",
+      drops: [
+        { item: "Tanzanite fang", points: 15 },
+        { item: "Magic fang", points: 15 },
+        { item: "Serpentine visage", points: 15 },
+        { item: "Uncut onyx", points: 10 },
+        { item: "Jar of swamp", points: 30 }
+      ]
+    },
+    {
+      name: "Corrupted Gauntlet",
+      drops: [
+        { item: "Enhanced crystal weapon seed", points: 35 },
+        { item: "Crystal armour seed", points: 12 },
+        { item: "Crystal weapon seed", points: 8 }
+      ]
+    },
+    {
+      name: "Zalcano",
+      drops: [
+        { item: "Crystal tool seed", points: 25 },
+        { item: "Zalcano shard", points: 10 }
+      ]
+    }
+  ]
+},
 
   kandarin: {
-    name: "Kandarin",
-    bosses: [
-      {
-        name: "Kraken",
-        drops: [
-          { item: "Kraken tentacle", points: 10 },
-          { item: "Trident of the seas", points: 8 },
-          { item: "Jar of dirt", points: 8 }
-        ]
-      },
-      {
-        name: "Thermonuclear Smoke Devil",
-        drops: [
-          { item: "Occult necklace", points: 12 },
-          { item: "Smoke battlestaff", points: 8 },
-          { item: "Jar of smoke", points: 8 }
-        ]
-      },
-      {
-        name: "Demonic Gorillas",
-        drops: [
-          { item: "Zenyte shard", points: 18 },
-          { item: "Ballista piece", points: 8 },
-          { item: "Ballista spring", points: 8 },
-          { item: "Ballista limbs", points: 8 }
-        ]
-      }
-    ]
-  },
-
+  name: "Kandarin",
+  bosses: [
+    {
+      name: "Kraken",
+      drops: [
+        { item: "Kraken tentacle", points: 10 },
+        { item: "Trident of the seas", points: 8 },
+        { item: "Jar of dirt", points: 15 }
+      ]
+    },
+    {
+      name: "Thermonuclear Smoke Devil",
+      drops: [
+        { item: "Occult necklace", points: 10 },
+        { item: "Smoke battlestaff", points: 12 },
+        { item: "Jar of smoke", points: 20 }
+      ]
+    },
+    {
+      name: "Demonic Gorillas",
+      drops: [
+        { item: "Zenyte shard", points: 18 },
+        { item: "Ballista piece", points: 8 }
+      ]
+    }
+  ]
+},
   asgarnia: {
-    name: "Asgarnia",
-    bosses: [
-      {
-        name: "General Graardor",
-        drops: [
-          { item: "Bandos chestplate", points: 12 },
-          { item: "Bandos tassets", points: 12 },
-          { item: "Bandos boots", points: 6 },
-          { item: "Bandos hilt", points: 10 }
-        ]
-      },
-      {
-        name: "Commander Zilyana",
-        drops: [
-          { item: "Armadyl crossbow", points: 15 },
-          { item: "Saradomin hilt", points: 10 },
-          { item: "Saradomin sword", points: 6 },
-          { item: "Saradomin's light", points: 6 }
-        ]
-      },
-      {
-        name: "Kree'arra",
-        drops: [
-          { item: "Armadyl helmet", points: 10 },
-          { item: "Armadyl chestplate", points: 12 },
-          { item: "Armadyl chainskirt", points: 12 },
-          { item: "Armadyl hilt", points: 10 }
-        ]
-      },
-      {
-        name: "K'ril Tsutsaroth",
-        drops: [
-          { item: "Zamorakian spear", points: 10 },
-          { item: "Staff of the dead", points: 10 },
-          { item: "Zamorak hilt", points: 10 },
-          { item: "Steam battlestaff", points: 6 }
-        ]
-      },
-      {
-        name: "Nex",
-        drops: [
-          { item: "Torva full helm", points: 25 },
-          { item: "Torva platebody", points: 30 },
-          { item: "Torva platelegs", points: 30 },
-          { item: "Nihil horn", points: 25 },
-          { item: "Zaryte vambraces", points: 20 },
-          { item: "Ancient hilt", points: 15 }
-        ]
-      },
-     
-      {
- 
+  name: "Asgarnia",
+  bosses: [
+    {
+      name: "General Graardor",
+      drops: [
+        { item: "Bandos chestplate", points: 15 },
+        { item: "Bandos tassets", points: 15 },
+        { item: "Bandos boots", points: 15 },
+        { item: "Bandos hilt", points: 20 }
+      ]
+    },
+    {
+      name: "Commander Zilyana",
+      drops: [
+        { item: "Armadyl crossbow", points: 20 },
+        { item: "Saradomin hilt", points: 20 },
+        { item: "Saradomin sword", points: 10 },
+        { item: "Saradomin's light", points: 15 }
+      ]
+    },
+    {
+      name: "Kree'arra",
+      drops: [
+        { item: "Armadyl helmet", points: 15 },
+        { item: "Armadyl chestplate", points: 15 },
+        { item: "Armadyl chainskirt", points: 15 },
+        { item: "Armadyl hilt", points: 20 }
+      ]
+    },
+    {
+      name: "K'ril Tsutsaroth",
+      drops: [
+        { item: "Zamorakian spear", points: 15 },
+        { item: "Steam battlestaff", points: 15 },
+        { item: "Staff of the dead", points: 20 },
+        { item: "Zamorak hilt", points: 20 }
+      ]
+    },
+    {
+      name: "Nex",
+      drops: [
+        { item: "Torva full helm", points: 25 },
+        { item: "Torva platebody", points: 25 },
+        { item: "Torva platelegs", points: 25 },
+        { item: "Nihil horn", points: 25 },
+        { item: "Zaryte vambraces", points: 20 },
+        { item: "Ancient hilt", points: 25 }
+      ]
+    },
+    {
       name: "Giant Mole",
       drops: [
         { item: "Mole claw", points: 2 },
         { item: "Mole skin", points: 2 }
       ]
-    }, 
-          
-      {
-        name: "Cerberus",
-        drops: [
-          { item: "Primordial crystal", points: 18 },
-          { item: "Pegasian crystal", points: 15 },
-          { item: "Eternal crystal", points: 12 },
-          { item: "Smouldering stone", points: 8 }
-        ]
-      },
-      {
-        name: "The Whisperer",
-        drops: [
-          { item: "Bellator vestige", points: 25 },
-          { item: "Siren's staff", points: 22 },
-          { item: "Virtus mask", points: 18 },
-          { item: "Virtus robe top", points: 18 },
-          { item: "Virtus robe bottom", points: 18 },
-          { item: "Shadow quartz", points: 12 },
-          { item: "Chromium ingot", points: 8 }
-        ]
-      }
-    ]
-  },
+    },
+    {
+      name: "Cerberus",
+      drops: [
+        { item: "Primordial crystal", points: 18 },
+        { item: "Pegasian crystal", points: 18 },
+        { item: "Eternal crystal", points: 18 },
+        { item: "Smouldering stone", points: 18 }
+      ]
+    },
+    {
+      name: "The Whisperer",
+      drops: [
+        { item: "Bellator vestige", points: 25 },
+        { item: "Siren's staff", points: 25 },
+        { item: "Virtus mask", points: 25 },
+        { item: "Virtus robe top", points: 25 },
+        { item: "Virtus robe bottom", points: 25 },
+        { item: "Shadow quartz", points: 8 },
+        { item: "Chromium ingot", points: 8 }
+      ]
+    }
+  ]
+},
 
 misthalin: {
   name: "Misthalin",
@@ -443,13 +465,13 @@ misthalin: {
       ]
     },
     {
-  name: "Brutus",
-  drops: [
-    { item: "Mooleta", points: 4 },
-    { item: "Bottomless milk bucket", points: 6 },
-    { item: "Cow slippers", points: 6 }
-  ]
-},
+      name: "Brutus",
+      drops: [
+        { item: "Mooleta", points: 4 },
+        { item: "Bottomless milk bucket", points: 4 },
+        { item: "Cow slippers", points: 8 }
+      ]
+    },
     {
       name: "Scurrius",
       drops: [
@@ -459,24 +481,25 @@ misthalin: {
     {
       name: "Tormented Demons",
       drops: [
-        { item: "Tormented synapse", points: 20 },
-        { item: "Burning claw", points: 10 }
+        { item: "Tormented synapse", points: 25 },
+        { item: "Burning claw", points: 25 }
       ]
     },
     {
       name: "The Leviathan",
       drops: [
         { item: "Venator vestige", points: 25 },
-        { item: "Leviathan's lure", points: 22 },
-        { item: "Virtus mask", points: 18 },
-        { item: "Virtus robe top", points: 18 },
-        { item: "Virtus robe bottom", points: 18 },
-        { item: "Smoke quartz", points: 12 },
+        { item: "Leviathan's lure", points: 25 },
+        { item: "Virtus mask", points: 25 },
+        { item: "Virtus robe top", points: 25 },
+        { item: "Virtus robe bottom", points: 25 },
+        { item: "Smoke quartz", points: 8 },
         { item: "Chromium ingot", points: 8 }
       ]
     }
   ]
 },
+
 morytania: {
   name: "Morytania",
   bosses: [
@@ -484,90 +507,130 @@ morytania: {
       name: "Theatre of Blood",
       drops: [
         { item: "Scythe of vitur", points: 60 },
-        { item: "Sanguinesti staff", points: 35 },
+        { item: "Sanguinesti staff", points: 30 },
         { item: "Ghrazi rapier", points: 30 },
-        { item: "Avernic defender hilt", points: 20 },
-        { item: "Justiciar piece", points: 15 }
+        { item: "Justiciar piece", points: 30 },
+        { item: "Avernic defender hilt", points: 15 }
       ]
     },
+
     {
       name: "Grotesque Guardians",
       drops: [
-        { item: "Black tourmaline core", points: 10 },
-        { item: "Granite hammer", points: 8 },
-        { item: "Granite gloves", points: 6 },
-        { item: "Granite ring", points: 6 },
-        { item: "Jar of stone", points: 8 }
+        { item: "Black tourmaline core", points: 20 },
+        { item: "Granite hammer", points: 15 },
+        { item: "Granite gloves", points: 10 },
+        { item: "Granite ring", points: 10 },
+        { item: "Jar of stone", points: 15 }
       ]
     },
+
     {
       name: "Barrows",
       drops: [
         { item: "Barrows piece", points: 2 }
       ]
     },
+
     {
       name: "Araxxor",
       drops: [
-        { item: "Noxious halberd piece", points: 18 },
-        { item: "Amulet of rancour", points: 18 },
-        { item: "Araxyte venom sack", points: 8 }
+        { item: "Noxious halberd piece", points: 15 },
+        { item: "Araxyte fang", points: 25 },
+        { item: "Araxyte head", points: 10 },
+        { item: "Jar of venom", points: 15 }
       ]
     },
+
     {
       name: "Maggot King",
       drops: [
         { item: "Crimson kisten", points: 25 },
         { item: "Necklace of Rupture", points: 25 }
       ]
+    },
+
+    {
+      name: "The Nightmare",
+      drops: [
+        { item: "Nightmare staff", points: 15 },
+        { item: "Inquisitor's great helm", points: 20 },
+        { item: "Inquisitor's hauberk", points: 20 },
+        { item: "Inquisitor's plateskirt", points: 20 },
+        { item: "Inquisitor's mace", points: 30 },
+        { item: "Eldritch orb", points: 35 },
+        { item: "Volatile orb", points: 35 },
+        { item: "Harmonised orb", points: 35 }
+      ]
     }
   ]
 },
 
-  karamja: {
+ karamja: {
   name: "Karamja",
   bosses: [
     {
       name: "TzHaar Challenges",
       drops: [
-        { item: "Fire cape", points: 10 },
-        { item: "Infernal cape", points: 35 }
+        { item: "TzRek-Jad", points: 35 },
+        { item: "Jal-nib-rek", points: 35 }
       ]
     },
+
     {
       name: "Shellbane Gryphon",
       drops: [
-        { item: "Belle's Folly", points: 18 },
-        { item: "Jar of feathers", points: 8 }
+        { item: "Belle's Folly", points: 15 },
+        { item: "Jar of feathers", points: 10 }
+      ]
+    },
+
+    {
+      name: "Abyssal Sire",
+      drops: [
+        { item: "Abyssal bludgeon piece", points: 20 },
+        { item: "Abyssal dagger", points: 18 },
+        { item: "Abyssal head", points: 10 },
+        { item: "Jar of miasma", points: 15 }
       ]
     }
   ]
 },
 
   desert: {
-    name: "Kharidian Desert",
-    bosses: [
-      {
-        name: "Tombs of Amascut",
-        drops: [
-          { item: "Tumeken's shadow", points: 60 },
-          { item: "Masori piece", points: 20 },
-          { item: "Osmumten's fang", points: 18 },
-          { item: "Lightbearer", points: 15 },
-          { item: "Elidinis' ward", points: 15 },
-          { item: "Thread of elidinis", points: 8 }
-        ]
-      },
-      {
-        name: "Kalphite Queen",
-        drops: [
-          { item: "Dragon chainbody", points: 8 },
-          { item: "Dragon 2h sword", points: 8 },
-          { item: "Kq head", points: 6 }
-        ]
-      }
-    ]
-  }
+  name: "Kharidian Desert",
+  bosses: [
+    {
+      name: "Tombs of Amascut",
+      drops: [
+        { item: "Tumeken's shadow", points: 60 },
+        { item: "Masori piece", points: 25 },
+        { item: "Elidinis' ward", points: 20 },
+        { item: "Osmumten's fang", points: 15 },
+        { item: "Lightbearer", points: 15 },
+        { item: "Thread of elidinis", points: 8 }
+      ]
+    },
+    {
+      name: "Kalphite Queen",
+      drops: [
+        { item: "Dragon chainbody", points: 8 },
+        { item: "Dragon 2h sword", points: 8 },
+        { item: "Kq head", points: 6 }
+      ]
+    },
+    {
+      name: "Tempoross",
+      drops: [
+        { item: "Dragon harpoon", points: 30 },
+        { item: "Tome of water", points: 15 },
+        { item: "Big harpoonfish", points: 15 },
+        { item: "Fish barrel", points: 10 },
+        { item: "Tackle box", points: 10 }
+      ]
+    }
+  ]
+},
 };
 
 /* =========================
