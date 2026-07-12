@@ -47,22 +47,25 @@ greatKourend: {
   name: "Great Kourend",
   bosses: [
     {
-      name: "Chambers of Xeric",
-      drops: [
-        { item: "Twisted bow", points: 60 },
-        { item: "Kodai insignia", points: 35 },
-        { item: "Elder maul", points: 30 },
-        { item: "Dragon hunter crossbow", points: 25 },
-        { item: "Ancestral robe top", points: 25 },
-        { item: "Ancestral robe bottom", points: 25 },
-        { item: "Dragon claws", points: 25 },
-        { item: "Ancestral hat", points: 20 },
-        { item: "Dinh's bulwark", points: 15 },
-        { item: "Dexterous prayer scroll", points: 15 },
-        { item: "Arcane prayer scroll", points: 15 },
-        { item: "Twisted buckler", points: 15 }
-      ]
-    },
+  name: "Chambers of Xeric",
+  drops: [
+    { item: "Twisted bow", points: 60 },
+    { item: "Kodai insignia", points: 35 },
+    { item: "Elder maul", points: 30 },
+    { item: "Dragon hunter crossbow", points: 25 },
+    { item: "Ancestral robe top", points: 25 },
+    { item: "Ancestral robe bottom", points: 25 },
+    { item: "Dragon claws", points: 25 },
+    { item: "Ancestral hat", points: 20 },
+    { item: "Dinh's bulwark", points: 15 },
+    { item: "Dexterous prayer scroll", points: 15 },
+    { item: "Arcane prayer scroll", points: 15 },
+    { item: "Twisted buckler", points: 15 },
+
+    { item: "Twisted ancestral colour kit", points: 20 },
+    { item: "Metamorphic dust", points: 35 }
+  ]
+},
 
     {
       name: "Sarachnis",
@@ -159,8 +162,7 @@ greatKourend: {
       drops: [
         { item: "Eye of Ayak", points: 30 },
         { item: "Avernic treads", points: 30 },
-        { item: "Confliction gauntlets", points: 30 },
-        { item: "Mokhaiotl cloth", points: 20 }
+        { item: "Mokhaiotl cloth", points: 30 }
       ]
     },
     {
@@ -503,16 +505,20 @@ misthalin: {
 morytania: {
   name: "Morytania",
   bosses: [
-    {
-      name: "Theatre of Blood",
-      drops: [
-        { item: "Scythe of vitur", points: 60 },
-        { item: "Sanguinesti staff", points: 30 },
-        { item: "Ghrazi rapier", points: 30 },
-        { item: "Justiciar piece", points: 30 },
-        { item: "Avernic defender hilt", points: 15 }
-      ]
-    },
+  {
+  name: "Theatre of Blood",
+  drops: [
+    { item: "Scythe of vitur", points: 60 },
+    { item: "Sanguinesti staff", points: 30 },
+    { item: "Ghrazi rapier", points: 30 },
+    { item: "Justiciar piece", points: 30 },
+    { item: "Avernic defender hilt", points: 15 },
+
+    { item: "Holy ornament kit", points: 20 },
+    { item: "Sanguine ornament kit", points: 25 },
+    { item: "Sanguine dust", points: 30 }
+  ]
+},
 
     {
       name: "Grotesque Guardians",
