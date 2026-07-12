@@ -433,6 +433,16 @@ greatKourend: {
       ]
     },
     {
+  name: "Royal Titans",
+  drops: [
+    { item: "Deadeye prayer scroll", points: 15 },
+    { item: "Mystic vigour prayer scroll", points: 15 },
+    { item: "Fire element staff crown", points: 15 },
+    { item: "Ice element staff crown", points: 15 },
+    { item: "Giantsoul amulet", points: 6 }
+  ]
+},
+    {
       name: "Cerberus",
       drops: [
         { item: "Primordial crystal", points: 18 },
