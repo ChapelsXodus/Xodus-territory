@@ -408,8 +408,8 @@ greatKourend: {
     {
       name: "K'ril Tsutsaroth",
       drops: [
-        { item: "Zamorakian spear", points: 15 },
-        { item: "Steam battlestaff", points: 15 },
+        { item: "Zamorakian spear", points: 10 },
+        { item: "Steam battlestaff", points: 10 },
         { item: "Staff of the dead", points: 20 },
         { item: "Zamorak hilt", points: 20 }
       ]
@@ -422,7 +422,7 @@ greatKourend: {
         { item: "Torva platelegs", points: 25 },
         { item: "Nihil horn", points: 25 },
         { item: "Zaryte vambraces", points: 20 },
-        { item: "Ancient hilt", points: 25 }
+        { item: "Ancient hilt", points: 30 }
       ]
     },
     {
@@ -435,10 +435,10 @@ greatKourend: {
     {
   name: "Royal Titans",
   drops: [
-    { item: "Deadeye prayer scroll", points: 15 },
-    { item: "Mystic vigour prayer scroll", points: 15 },
-    { item: "Fire element staff crown", points: 15 },
-    { item: "Ice element staff crown", points: 15 },
+    { item: "Deadeye prayer scroll", points: 10 },
+    { item: "Mystic vigour prayer scroll", points: 10 },
+    { item: "Fire element staff crown", points: 10 },
+    { item: "Ice element staff crown", points: 10 },
     { item: "Giantsoul amulet", points: 6 }
   ]
 },
