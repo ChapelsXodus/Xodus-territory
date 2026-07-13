@@ -481,13 +481,13 @@ misthalin: {
       drops: [
         { item: "Mooleta", points: 4 },
         { item: "Bottomless milk bucket", points: 4 },
-        { item: "Cow slippers", points: 8 }
+        { item: "Cow slippers", points: 4 }
       ]
     },
     {
       name: "Scurrius",
       drops: [
-        { item: "Scurrius spine", points: 8 }
+        { item: "Scurrius spine", points: 4 }
       ]
     },
     {
