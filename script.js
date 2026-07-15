@@ -302,6 +302,7 @@ greatKourend: {
         { item: "Voidwaker hilt", points: 25 },
         { item: "Tyrannical ring", points: 12 },
         { item: "Dragon pickaxe", points: 10 },
+        { item: "Claw of Callisto", points: 6 },
         { item: "Dragon 2h sword", points: 6 },
         { item: "Bear Pet", points: 20 }
       ]
@@ -312,6 +313,7 @@ greatKourend: {
         { item: "Voidwaker blade", points: 25 },
         { item: "Ring of the gods", points: 12 },
         { item: "Dragon pickaxe", points: 10 },
+        { item: "Skull of Vet'ion", points: 6 },
         { item: "Dragon 2h sword", points: 6 },
         { item: "Vet'ion Pet", points: 20 }
       ]
@@ -322,6 +324,7 @@ greatKourend: {
         { item: "Voidwaker gem", points: 25 },
         { item: "Treasonous ring", points: 12 },
         { item: "Dragon pickaxe", points: 10 },
+        { item: "Fangs of Venenatis", points: 6 },
         { item: "Dragon 2h sword", points: 6 },
         { item: "Venenatis Pet", points: 20 }
       ]
