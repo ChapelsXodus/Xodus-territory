@@ -72,6 +72,7 @@ greatKourend: {
       drops: [
         { item: "Sarachnis cudgel", points: 10 },
         { item: "Jar of eyes", points: 8 },
+        { item: "Pristine Spider Silk", points: 5},
         { item: "Pet", points: 20 }
       ]
     },
