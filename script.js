@@ -349,6 +349,7 @@ greatKourend: {
         { item: "Serpentine visage", points: 15 },
         { item: "Uncut onyx", points: 10 },
         { item: "Jar of swamp", points: 30 },
+        { item: "Mutagen", points: 35 },
         { item: "Snake Pet", points: 20 }
       ]
     },
@@ -618,6 +619,7 @@ morytania: {
         { item: "Eldritch orb", points: 35 },
         { item: "Volatile orb", points: 35 },
         { item: "Harmonised orb", points: 35 },
+        { item: "Jar of Dreams", points: 30 },
         { item: "Nightmare Pet", points: 20 }
       ]
     }
