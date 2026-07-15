@@ -677,6 +677,7 @@ morytania: {
       drops: [
         { item: "Dragon chainbody", points: 8 },
         { item: "Dragon 2h sword", points: 8 },
+        { item: "Dragon Pickaxe", points: 8 }, 
         { item: "Kq head", points: 6 },
         { item: "Pet", points: 20 }
       ]
