@@ -61,7 +61,7 @@ greatKourend: {
     { item: "Dexterous prayer scroll", points: 15 },
     { item: "Arcane prayer scroll", points: 15 },
     { item: "Twisted buckler", points: 15 },
-
+    { item: "Pet", points: 20 },
     { item: "Twisted ancestral colour kit", points: 20 },
     { item: "Metamorphic dust", points: 35 }
   ]
@@ -71,7 +71,8 @@ greatKourend: {
       name: "Sarachnis",
       drops: [
         { item: "Sarachnis cudgel", points: 10 },
-        { item: "Jar of eyes", points: 8 }
+        { item: "Jar of eyes", points: 8 },
+        { item: "Pet", points: 20 }
       ]
     },
 
@@ -79,7 +80,8 @@ greatKourend: {
       name: "Skotizo",
       drops: [
         { item: "Dark claw", points: 8 },
-        { item: "Jar of darkness", points: 10 }
+        { item: "Jar of darkness", points: 10 },
+        { item: "Pet", points: 20 }
       ]
     },
 
@@ -90,7 +92,8 @@ greatKourend: {
         { item: "Bruma torch", points: 4 },
         { item: "Warm gloves", points: 2 },
         { item: "Tome of fire", points: 15 },
-        { item: "Dragon axe", points: 20 }
+        { item: "Dragon axe", points: 20 },
+        { item: "Pet", points: 20 }
       ]
     }
   ]
@@ -109,7 +112,8 @@ greatKourend: {
         { item: "Hydra's fang", points: 8 },
         { item: "Hydra's heart", points: 8 },
         { item: "Dragon knife", points: 6 },
-        { item: "Dragon thrownaxe", points: 6 }
+        { item: "Dragon thrownaxe", points: 6 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -121,7 +125,8 @@ greatKourend: {
         { item: "Virtus robe top", points: 25 },
         { item: "Virtus robe bottom", points: 25 },
         { item: "Blood quartz", points: 8 },
-        { item: "Chromium ingot", points: 8 }
+        { item: "Chromium ingot", points: 8 },
+        { item: "Pet", points: 20 }
       ]
     }
   ]
@@ -146,7 +151,8 @@ greatKourend: {
       drops: [
         { item: "Dragon hunter wand", points: 25 },
         { item: "Tome of earth", points: 15 },
-        { item: "Hueycoatl hide", points: 12 }
+        { item: "Hueycoatl hide", points: 12 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -154,7 +160,8 @@ greatKourend: {
       drops: [
         { item: "Oathplate helm", points: 25 },
         { item: "Oathplate chest", points: 25 },
-        { item: "Oathplate legs", points: 25 }
+        { item: "Oathplate legs", points: 25 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -162,7 +169,8 @@ greatKourend: {
       drops: [
         { item: "Eye of Ayak", points: 30 },
         { item: "Avernic treads", points: 30 },
-        { item: "Mokhaiotl cloth", points: 30 }
+        { item: "Mokhaiotl cloth", points: 30 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -175,7 +183,8 @@ greatKourend: {
       name: "Amoxliatl",
       drops: [
         { item: "Glacial temotli", points: 15 },
-        { item: "Pendant of ates (inert)", points: 6 }
+        { item: "Pendant of ates (inert)", points: 6 },
+        { item: "Pet", points: 20 }
       ]
     }
   ]
@@ -189,7 +198,8 @@ greatKourend: {
       drops: [
         { item: "Skeletal visage", points: 35 },
         { item: "Draconic visage", points: 35 },
-        { item: "Jar of decay", points: 30 }
+        { item: "Jar of decay", points: 30 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -201,7 +211,8 @@ greatKourend: {
         { item: "Warrior ring", points: 10 },
         { item: "Dragon axe", points: 6 },
         { item: "Seercull", points: 6 },
-        { item: "Mud battlestaff", points: 6 }
+        { item: "Mud battlestaff", points: 6 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -209,7 +220,8 @@ greatKourend: {
       drops: [
         { item: "Venator shard", points: 15 },
         { item: "Ancient icon", points: 8 },
-        { item: "Frozen cache", points: 4 }
+        { item: "Frozen cache", points: 4 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -221,7 +233,8 @@ greatKourend: {
         { item: "Virtus robe top", points: 25 },
         { item: "Virtus robe bottom", points: 25 },
         { item: "Ice quartz", points: 8 },
-        { item: "Chromium ingot", points: 8 }
+        { item: "Chromium ingot", points: 8 },
+        { item: "Pet", points: 20 }
       ]
     }
   ]
@@ -234,21 +247,24 @@ greatKourend: {
       name: "King Black Dragon",
       drops: [
         { item: "Draconic visage", points: 35 },
-        { item: "Kbd heads", points: 8 }
+        { item: "Kbd heads", points: 8 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
       name: "Chaos Elemental",
       drops: [
         { item: "Dragon pickaxe", points: 10 },
-        { item: "Dragon 2h sword", points: 8 }
+        { item: "Dragon 2h sword", points: 8 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
       name: "Chaos Fanatic",
       drops: [
         { item: "Odium shard 1", points: 10 },
-        { item: "Malediction shard 1", points: 10 }
+        { item: "Malediction shard 1", points: 10 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -263,7 +279,8 @@ greatKourend: {
       name: "Scorpia",
       drops: [
         { item: "Odium shard 3", points: 10 },
-        { item: "Malediction shard 3", points: 10 }
+        { item: "Malediction shard 3", points: 10 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -273,7 +290,8 @@ greatKourend: {
         { item: "Arcane sigil", points: 40 },
         { item: "Elysian sigil", points: 40 },
         { item: "Holy elixir", points: 12 },
-        { item: "Spirit shield", points: 6 }
+        { item: "Spirit shield", points: 6 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -282,7 +300,8 @@ greatKourend: {
         { item: "Voidwaker hilt", points: 25 },
         { item: "Tyrannical ring", points: 12 },
         { item: "Dragon pickaxe", points: 10 },
-        { item: "Dragon 2h sword", points: 6 }
+        { item: "Dragon 2h sword", points: 6 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -291,7 +310,8 @@ greatKourend: {
         { item: "Voidwaker blade", points: 25 },
         { item: "Ring of the gods", points: 12 },
         { item: "Dragon pickaxe", points: 10 },
-        { item: "Dragon 2h sword", points: 6 }
+        { item: "Dragon 2h sword", points: 6 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -300,7 +320,8 @@ greatKourend: {
         { item: "Voidwaker gem", points: 25 },
         { item: "Treasonous ring", points: 12 },
         { item: "Dragon pickaxe", points: 10 },
-        { item: "Dragon 2h sword", points: 6 }
+        { item: "Dragon 2h sword", points: 6 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -326,7 +347,8 @@ greatKourend: {
         { item: "Magic fang", points: 15 },
         { item: "Serpentine visage", points: 15 },
         { item: "Uncut onyx", points: 10 },
-        { item: "Jar of swamp", points: 30 }
+        { item: "Jar of swamp", points: 30 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -334,14 +356,16 @@ greatKourend: {
       drops: [
         { item: "Enhanced crystal weapon seed", points: 35 },
         { item: "Crystal armour seed", points: 12 },
-        { item: "Crystal weapon seed", points: 8 }
+        { item: "Crystal weapon seed", points: 8 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
       name: "Zalcano",
       drops: [
         { item: "Crystal tool seed", points: 25 },
-        { item: "Zalcano shard", points: 10 }
+        { item: "Zalcano shard", points: 10 },
+        { item: "Pet", points: 20 }
       ]
     }
   ]
@@ -355,7 +379,8 @@ greatKourend: {
       drops: [
         { item: "Kraken tentacle", points: 10 },
         { item: "Trident of the seas", points: 8 },
-        { item: "Jar of dirt", points: 15 }
+        { item: "Jar of dirt", points: 15 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -363,7 +388,8 @@ greatKourend: {
       drops: [
         { item: "Occult necklace", points: 10 },
         { item: "Smoke battlestaff", points: 12 },
-        { item: "Jar of smoke", points: 20 }
+        { item: "Jar of smoke", points: 20 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -384,7 +410,8 @@ greatKourend: {
         { item: "Bandos chestplate", points: 15 },
         { item: "Bandos tassets", points: 15 },
         { item: "Bandos boots", points: 15 },
-        { item: "Bandos hilt", points: 20 }
+        { item: "Bandos hilt", points: 20 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -393,7 +420,8 @@ greatKourend: {
         { item: "Armadyl crossbow", points: 20 },
         { item: "Saradomin hilt", points: 20 },
         { item: "Saradomin sword", points: 10 },
-        { item: "Saradomin's light", points: 15 }
+        { item: "Saradomin's light", points: 15 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -402,7 +430,8 @@ greatKourend: {
         { item: "Armadyl helmet", points: 15 },
         { item: "Armadyl chestplate", points: 15 },
         { item: "Armadyl chainskirt", points: 15 },
-        { item: "Armadyl hilt", points: 20 }
+        { item: "Armadyl hilt", points: 20 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -411,7 +440,8 @@ greatKourend: {
         { item: "Zamorakian spear", points: 10 },
         { item: "Steam battlestaff", points: 10 },
         { item: "Staff of the dead", points: 20 },
-        { item: "Zamorak hilt", points: 20 }
+        { item: "Zamorak hilt", points: 20 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -422,14 +452,15 @@ greatKourend: {
         { item: "Torva platelegs", points: 25 },
         { item: "Nihil horn", points: 25 },
         { item: "Zaryte vambraces", points: 20 },
-        { item: "Ancient hilt", points: 30 }
+        { item: "Ancient hilt", points: 30 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
       name: "Giant Mole",
       drops: [
         { item: "Immaculate Mole skin", points: 5 },
-       
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -439,7 +470,8 @@ greatKourend: {
     { item: "Mystic vigour prayer scroll", points: 10 },
     { item: "Fire element staff crown", points: 10 },
     { item: "Ice element staff crown", points: 10 },
-    { item: "Giantsoul amulet", points: 6 }
+    { item: "Giantsoul amulet", points: 6 },
+    { item: "Pet", points: 20 }
   ]
 },
     {
@@ -448,7 +480,8 @@ greatKourend: {
         { item: "Primordial crystal", points: 18 },
         { item: "Pegasian crystal", points: 18 },
         { item: "Eternal crystal", points: 18 },
-        { item: "Smouldering stone", points: 18 }
+        { item: "Smouldering stone", points: 18 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -460,7 +493,8 @@ greatKourend: {
         { item: "Virtus robe top", points: 25 },
         { item: "Virtus robe bottom", points: 25 },
         { item: "Shadow quartz", points: 8 },
-        { item: "Chromium ingot", points: 8 }
+        { item: "Chromium ingot", points: 8 },
+        { item: "Pet", points: 20 }
       ]
     }
   ]
@@ -481,13 +515,15 @@ misthalin: {
       drops: [
         { item: "Mooleta", points: 4 },
         { item: "Bottomless milk bucket", points: 4 },
-        { item: "Cow slippers", points: 4 }
+        { item: "Cow slippers", points: 4 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
       name: "Scurrius",
       drops: [
-        { item: "Scurrius spine", points: 4 }
+        { item: "Scurrius spine", points: 4 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -506,7 +542,8 @@ misthalin: {
         { item: "Virtus robe top", points: 25 },
         { item: "Virtus robe bottom", points: 25 },
         { item: "Smoke quartz", points: 8 },
-        { item: "Chromium ingot", points: 8 }
+        { item: "Chromium ingot", points: 8 },
+        { item: "Pet", points: 20 }
       ]
     }
   ]
@@ -523,10 +560,10 @@ morytania: {
     { item: "Ghrazi rapier", points: 30 },
     { item: "Justiciar piece", points: 30 },
     { item: "Avernic defender hilt", points: 15 },
-
     { item: "Holy ornament kit", points: 20 },
     { item: "Sanguine ornament kit", points: 25 },
-    { item: "Sanguine dust", points: 30 }
+    { item: "Sanguine dust", points: 30 },
+    { item: "Pet", points: 20 }
   ]
 },
 
@@ -537,7 +574,8 @@ morytania: {
         { item: "Granite hammer", points: 15 },
         { item: "Granite gloves", points: 10 },
         { item: "Granite ring", points: 10 },
-        { item: "Jar of stone", points: 15 }
+        { item: "Jar of stone", points: 15 },
+        { item: "Pet", points: 20 }
       ]
     },
 
@@ -554,7 +592,8 @@ morytania: {
         { item: "Noxious halberd piece", points: 15 },
         { item: "Araxyte fang", points: 25 },
         { item: "Araxyte head", points: 10 },
-        { item: "Jar of venom", points: 15 }
+        { item: "Jar of venom", points: 15 },
+        { item: "Pet", points: 20 }
       ]
     },
 
@@ -562,7 +601,8 @@ morytania: {
       name: "Maggot King",
       drops: [
         { item: "Crimson kisten", points: 25 },
-        { item: "Necklace of Rupture", points: 25 }
+        { item: "Necklace of Rupture", points: 25 },
+        { item: "Pet", points: 20 }
       ]
     },
 
@@ -576,7 +616,8 @@ morytania: {
         { item: "Inquisitor's mace", points: 30 },
         { item: "Eldritch orb", points: 35 },
         { item: "Volatile orb", points: 35 },
-        { item: "Harmonised orb", points: 35 }
+        { item: "Harmonised orb", points: 35 },
+        { item: "Pet", points: 20 }
       ]
     }
   ]
@@ -597,7 +638,8 @@ morytania: {
       name: "Shellbane Gryphon",
       drops: [
         { item: "Belle's Folly", points: 15 },
-        { item: "Jar of feathers", points: 10 }
+        { item: "Jar of feathers", points: 10 },
+        { item: "Pet", points: 20 }
       ]
     },
 
@@ -607,7 +649,8 @@ morytania: {
         { item: "Abyssal bludgeon piece", points: 20 },
         { item: "Abyssal dagger", points: 18 },
         { item: "Abyssal head", points: 10 },
-        { item: "Jar of miasma", points: 15 }
+        { item: "Jar of miasma", points: 15 },
+        { item: "Pet", points: 20 }
       ]
     }
   ]
@@ -624,7 +667,8 @@ morytania: {
         { item: "Elidinis' ward", points: 20 },
         { item: "Osmumten's fang", points: 15 },
         { item: "Lightbearer", points: 15 },
-        { item: "Thread of elidinis", points: 8 }
+        { item: "Thread of elidinis", points: 8 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -632,7 +676,8 @@ morytania: {
       drops: [
         { item: "Dragon chainbody", points: 8 },
         { item: "Dragon 2h sword", points: 8 },
-        { item: "Kq head", points: 6 }
+        { item: "Kq head", points: 6 },
+        { item: "Pet", points: 20 }
       ]
     },
     {
@@ -642,7 +687,8 @@ morytania: {
         { item: "Tome of water", points: 15 },
         { item: "Big harpoonfish", points: 15 },
         { item: "Fish barrel", points: 10 },
-        { item: "Tackle box", points: 10 }
+        { item: "Tackle box", points: 10 },
+        { item: "Pet", points: 20 }
       ]
     }
   ]
