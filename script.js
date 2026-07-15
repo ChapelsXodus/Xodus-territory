@@ -81,7 +81,7 @@ greatKourend: {
       drops: [
         { item: "Dark claw", points: 8 },
         { item: "Jar of darkness", points: 10 },
-        { item: "Pet", points: 20 }
+        { item: "Pet", points: 10 }
       ]
     },
 
@@ -515,7 +515,7 @@ misthalin: {
         { item: "Mooleta", points: 4 },
         { item: "Bottomless milk bucket", points: 4 },
         { item: "Cow slippers", points: 4 },
-        { item: "Pet", points: 20 }
+        { item: "Pet", points: 10 }
       ]
     },
     {
