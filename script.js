@@ -113,6 +113,7 @@ greatKourend: {
         { item: "Hydra's heart", points: 8 },
         { item: "Dragon knife", points: 6 },
         { item: "Dragon thrownaxe", points: 6 },
+        { item: "Hydra Heads", points: 10},
         { item: "Pet", points: 20 }
       ]
     },
