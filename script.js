@@ -61,9 +61,9 @@ greatKourend: {
     { item: "Dexterous prayer scroll", points: 15 },
     { item: "Arcane prayer scroll", points: 15 },
     { item: "Twisted buckler", points: 15 },
-    { item: "Pet", points: 20 },
     { item: "Twisted ancestral colour kit", points: 20 },
-    { item: "Metamorphic dust", points: 35 }
+    { item: "Metamorphic dust", points: 35 },
+    { item: "Pet", points: 20 }
   ]
 },
 
