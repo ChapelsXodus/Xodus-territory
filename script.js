@@ -263,8 +263,7 @@ greatKourend: {
       name: "Chaos Fanatic",
       drops: [
         { item: "Odium shard 1", points: 10 },
-        { item: "Malediction shard 1", points: 10 },
-        { item: "Pet", points: 20 }
+        { item: "Malediction shard 1", points: 10 } 
       ]
     },
     {
