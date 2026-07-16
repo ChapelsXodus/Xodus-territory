@@ -885,13 +885,70 @@ onSnapshot(stateRef, (snapshot) => {
 
     applyOwnershipColors();
     updateSelectedRegionUI();
-    updateScoreboard();
+   function updateScoreboard() {
+  let team1Points = 0;
+  let team2Points = 0;
+  let team1Regions = 0;
+  let team2Regions = 0;
 
-    if (selectedRegion) {
-      displayRegionInfo(selectedRegion);
+  Object.keys(regions).forEach((regionKey) => {
+    const bluePoints = getTeamRegionPoints(regionKey, "team1");
+    const redPoints = getTeamRegionPoints(regionKey, "team2");
+
+    team1Points += bluePoints;
+    team2Points += redPoints;
+
+    const controller = getRegionController(regionKey);
+
+    if (controller === "team1") {
+      team1Regions++;
+    } else if (controller === "team2") {
+      team2Regions++;
     }
+  });
+
+  console.log("Blue points:", team1Points);
+  console.log("Red points:", team2Points);
+  console.log("Blue regions:", team1Regions);
+  console.log("Red regions:", team2Regions);
+
+  const team1PointsElement = document.getElementById("team1Points");
+  const team2PointsElement = document.getElementById("team2Points");
+  const team1RegionsElement = document.getElementById("team1Regions");
+  const team2RegionsElement = document.getElementById("team2Regions");
+
+  if (!team1PointsElement) {
+    console.error("Missing HTML element: team1Points");
   }
-});
+
+  if (!team2PointsElement) {
+    console.error("Missing HTML element: team2Points");
+  }
+
+  if (!team1RegionsElement) {
+    console.error("Missing HTML element: team1Regions");
+  }
+
+  if (!team2RegionsElement) {
+    console.error("Missing HTML element: team2Regions");
+  }
+
+  if (team1PointsElement) {
+    team1PointsElement.textContent = team1Points.toLocaleString();
+  }
+
+  if (team2PointsElement) {
+    team2PointsElement.textContent = team2Points.toLocaleString();
+  }
+
+  if (team1RegionsElement) {
+    team1RegionsElement.textContent = team1Regions;
+  }
+
+  if (team2RegionsElement) {
+    team2RegionsElement.textContent = team2Regions;
+  }
+}
 
 /* =========================
    MAP EVENTS
