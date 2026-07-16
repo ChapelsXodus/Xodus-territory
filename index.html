@@ -12,6 +12,36 @@
     <p>Click a territory to view its bosses, drops, points, and current owner.</p>
   </header>
 
+  <section class="scoreboard" aria-label="Territory War Scoreboard">
+    <div class="score-card red-score">
+      <h2>Red Team</h2>
+
+      <div class="score-stat">
+        <span>Total Points</span>
+        <strong id="team2Points">0</strong>
+      </div>
+
+      <div class="score-stat">
+        <span>Regions Controlled</span>
+        <strong id="team2Regions">0</strong>
+      </div>
+    </div>
+
+    <div class="score-card blue-score">
+      <h2>Blue Team</h2>
+
+      <div class="score-stat">
+        <span>Total Points</span>
+        <strong id="team1Points">0</strong>
+      </div>
+
+      <div class="score-stat">
+        <span>Regions Controlled</span>
+        <strong id="team1Regions">0</strong>
+      </div>
+    </div>
+  </section>
+
   <main class="map-layout">
     <section class="map-container">
       <img src="territory-map.jpg" alt="Gielinor Territory Map" class="world-map" />
@@ -19,11 +49,11 @@
       <svg class="territory-overlay" viewBox="0 0 1000 580" preserveAspectRatio="none">
         <polygon class="owner-zone great-kourend" data-region="greatKourend"
           points="102,217 106,174 112,155 100,144 82,105 88,70 98,61 124,53 124,36 154,16 173,11 199,16 228,28 268,65 276,77 268,93 254,102 261,140 252,167 268,196 266,218 245,240 240,249 211,252 204,232 182,223 163,247 124,247 102,217" />
-          
-          <polygon class="owner-zone kebos-lowlands" data-region="kebosLowlands"
+
+        <polygon class="owner-zone kebos-lowlands" data-region="kebosLowlands"
           points="112,155 105,173 100,216 90,230 69,234 12,236 3,213 11,192 7,166 18,116 35,97 43,86 67,84 84,87 83,108 100,145 112,155" />
-        
-          <polygon class="owner-zone varlamore" data-region="varlamore"
+
+        <polygon class="owner-zone varlamore" data-region="varlamore"
           points="11,235 72,234 89,238 96,254 97,264 120,270 156,285 183,289 209,304 224,315 237,321 227,340 226,360 210,373 206,387 197,398 148,412 131,413 104,393 79,394 63,420 28,432 4,412 -1,375 15,331 6,307 7,283 11,235" />
 
         <polygon class="owner-zone fremennik" data-region="fremennik"
@@ -37,11 +67,11 @@
 
         <polygon class="owner-zone kandarin" data-region="kandarin"
           points="407,233 439,289 430,360 415,377 386,386 349,387 334,413 333,448 365,474 416,484 431,443 465,445 473,462 524,458 549,420 551,391 546,372 560,341 565,314 576,295 581,269 590,246 602,239 614,231 607,213 585,180 559,174 526,202 498,180 459,173 443,141 413,138 397,174 405,232" />
-        
-          <polygon class="owner-zone asgarnia" data-region="asgarnia"
+
+        <polygon class="owner-zone asgarnia" data-region="asgarnia"
           points="606,58 617,40 643,46 650,55 649,95 635,118 638,138 643,144 640,166 646,175 684,206 694,304 689,333 670,354 659,331 650,329 635,317 633,295 630,283 599,278 594,257 595,245 614,231 602,199 600,152 602,105 604,58" />
-          
-          <polygon class="owner-zone misthalin" data-region="misthalin"
+
+        <polygon class="owner-zone misthalin" data-region="misthalin"
           points="799,198 717,198 691,197 684,210 695,306 678,366 709,390 730,350 760,343 765,319 761,295 800,290 812,279 820,232 800,197" />
 
         <polygon class="owner-zone morytania" data-region="morytania"
