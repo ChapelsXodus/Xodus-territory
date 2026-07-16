@@ -285,3 +285,58 @@ header p {
 .edit-mode-actions button:hover {
   background: #333;
 }
+
+.scoreboard {
+  width: min(1100px, calc(100% - 32px));
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.score-card {
+  padding: 20px;
+  border: 2px solid;
+  border-radius: 12px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+}
+
+.score-card h2 {
+  margin: 0 0 16px;
+  font-size: 28px;
+}
+
+.red-score {
+  background: linear-gradient(135deg, #651515, #b82323);
+  border-color: #ef6262;
+}
+
+.blue-score {
+  background: linear-gradient(135deg, #142e63, #205ab2);
+  border-color: #6fa7ff;
+}
+
+.score-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.score-stat span {
+  font-size: 17px;
+}
+
+.score-stat strong {
+  font-size: 28px;
+}
+
+@media (max-width: 650px) {
+  .scoreboard {
+    grid-template-columns: 1fr;
+  }
+}
