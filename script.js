@@ -66,7 +66,15 @@ greatKourend: {
     { item: "olm Pet", points: 20 }
   ]
 },
-
+{
+      name: "Yama",
+      drops: [
+        { item: "Oathplate helm", points: 25 },
+        { item: "Oathplate chest", points: 25 },
+        { item: "Oathplate legs", points: 25 },
+        { item: "Yama Pet", points: 20 }
+      ]
+    },
     {
       name: "Sarachnis",
       drops: [
@@ -157,15 +165,7 @@ greatKourend: {
         { item: "Hueycoatl Pet", points: 20 }
       ]
     },
-    {
-      name: "Yama",
-      drops: [
-        { item: "Oathplate helm", points: 25 },
-        { item: "Oathplate chest", points: 25 },
-        { item: "Oathplate legs", points: 25 },
-        { item: "Yama Pet", points: 20 }
-      ]
-    },
+    
     {
       name: "Doom of Mokhaiotl",
       drops: [
