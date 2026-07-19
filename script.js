@@ -256,7 +256,7 @@ greatKourend: {
     {
       name: "Chaos Elemental",
       drops: [
-        { item: "Dragon pickaxe", points: 10 },
+        { item: "Dragon pickaxe (1)", points: 10 },
         { item: "Dragon 2h sword (1)", points: 8 },
         { item: "Chaos Elemental Pet", points: 20 }
       ]
@@ -301,7 +301,7 @@ greatKourend: {
       drops: [
         { item: "Voidwaker hilt", points: 25 },
         { item: "Tyrannical ring", points: 12 },
-        { item: "Dragon pickaxe", points: 10 },
+        { item: "Dragon pickaxe (2)", points: 10 },
         { item: "Claw of Callisto", points: 6 },
         { item: "Dragon 2h sword (2)", points: 6 },
         { item: "Bear Pet", points: 20 }
@@ -312,7 +312,7 @@ greatKourend: {
       drops: [
         { item: "Voidwaker blade", points: 25 },
         { item: "Ring of the gods", points: 12 },
-        { item: "Dragon pickaxe", points: 10 },
+        { item: "Dragon pickaxe (3)", points: 10 },
         { item: "Skull of Vet'ion", points: 6 },
         { item: "Dragon 2h sword (3)", points: 6 },
         { item: "Vet'ion Pet", points: 20 }
@@ -323,7 +323,7 @@ greatKourend: {
       drops: [
         { item: "Voidwaker gem", points: 25 },
         { item: "Treasonous ring", points: 12 },
-        { item: "Dragon pickaxe", points: 10 },
+        { item: "Dragon pickaxe (4)", points: 10 },
         { item: "Fangs of Venenatis", points: 6 },
         { item: "Dragon 2h sword (4)", points: 6 },
         { item: "Venenatis Pet", points: 20 }
