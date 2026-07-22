@@ -49,18 +49,18 @@ greatKourend: {
     {
   name: "Chambers of Xeric",
   drops: [
-    { item: "Twisted bow", points: 60 },
-    { item: "Kodai insignia", points: 35 },
-    { item: "Elder maul", points: 30 },
-    { item: "Dragon hunter crossbow", points: 25 },
-    { item: "Ancestral robe top", points: 25 },
-    { item: "Ancestral robe bottom", points: 25 },
-    { item: "Dragon claws", points: 25 },
-    { item: "Ancestral hat", points: 20 },
-    { item: "Dinh's bulwark", points: 15 },
-    { item: "Dexterous prayer scroll", points: 15 },
-    { item: "Arcane prayer scroll", points: 15 },
-    { item: "Twisted buckler", points: 15 },
+    { item: "Twisted bow", points: 70 },
+    { item: "Kodai insignia", points: 60 },
+    { item: "Elder maul", points: 60 },
+    { item: "Dragon hunter crossbow", points: 30 },
+    { item: "Ancestral robe top", points: 35 },
+    { item: "Ancestral robe bottom", points: 35 },
+    { item: "Dragon claws", points: 35 },
+    { item: "Ancestral hat", points: 35 },
+    { item: "Dinh's bulwark", points: 35 },
+    { item: "Dexterous prayer scroll", points: 25 },
+    { item: "Arcane prayer scroll", points: 25 },
+    { item: "Twisted buckler", points: 30 },
     { item: "Twisted ancestral colour kit", points: 20 },
     { item: "Metamorphic dust", points: 35 },
     { item: "olm Pet", points: 20 }
@@ -80,7 +80,7 @@ greatKourend: {
       drops: [
         { item: "Sarachnis cudgel", points: 10 },
         { item: "Jar of eyes", points: 8 },
-        { item: "Pristine Spider Silk", points: 5},
+        { item: "Pristine Spider Silk", points: 3},
         { item: "Sarachnis Pet", points: 20 }
       ]
     },
