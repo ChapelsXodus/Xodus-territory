@@ -646,7 +646,8 @@ morytania: {
       drops: [
         { item: "Belle's Folly", points: 15 },
         { item: "Jar of feathers", points: 10 },
-        { item: "Gryphon Pet", points: 20 }
+        { item: "Gryphon Pet", points: 20 },
+        { item: "Belle's Folly (Post Update)", points: 8 }
       ]
     },
 
