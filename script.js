@@ -561,11 +561,11 @@ morytania: {
   {
   name: "Theatre of Blood",
   drops: [
-    { item: "Scythe of vitur", points: 60 },
-    { item: "Sanguinesti staff", points: 30 },
-    { item: "Ghrazi rapier", points: 30 },
-    { item: "Justiciar piece", points: 30 },
-    { item: "Avernic defender hilt", points: 15 },
+    { item: "Scythe of vitur", points: 70 },
+    { item: "Sanguinesti staff", points: 40 },
+    { item: "Ghrazi rapier", points: 40 },
+    { item: "Justiciar piece", points: 40 },
+    { item: "Avernic defender hilt", points: 25 },
     { item: "Holy ornament kit", points: 20 },
     { item: "Sanguine ornament kit", points: 25 },
     { item: "Sanguine dust", points: 30 },
@@ -670,12 +670,12 @@ morytania: {
     {
       name: "Tombs of Amascut",
       drops: [
-        { item: "Tumeken's shadow", points: 60 },
-        { item: "Masori piece", points: 25 },
-        { item: "Elidinis' ward", points: 20 },
-        { item: "Osmumten's fang", points: 15 },
-        { item: "Lightbearer", points: 15 },
-        { item: "Thread of elidinis", points: 8 },
+        { item: "Tumeken's shadow", points: 70 },
+        { item: "Masori piece", points: 35 },
+        { item: "Elidinis' ward", points: 30 },
+        { item: "Osmumten's fang", points: 25 },
+        { item: "Lightbearer", points: 25 },
+        { item: "Thread of elidinis", points: 18 },
         { item: "TOA Pet", points: 20 }
       ]
     },
