@@ -857,24 +857,37 @@ if (team2RegionsElement) {team2RegionsElement.textContent = team2Regions;}}
 /* =========================
    FIRESTORE LIVE LISTENER
 ========================= */
-onSnapshot(stateRef, (snapshot) => {
-  if (snapshot.exists()) {
-    const data = snapshot.data();
+onSnapshot(
+  stateRef,
+  (snapshot) => {
+    console.log("Firestore snapshot received.");
 
-    territoryProgress = data.progress || {};
+    if (snapshot.exists()) {
+      console.log("Firestore data:", snapshot.data());
 
-    territoryOwners = { ...data };
-    delete territoryOwners.progress;
+      const data = snapshot.data();
 
-    applyOwnershipColors();
-    updateSelectedRegionUI();
-    updateScoreboard();
+      territoryProgress = data.progress || {};
 
-    if (selectedRegion) {
-      displayRegionInfo(selectedRegion);
+      territoryOwners = { ...data };
+      delete territoryOwners.progress;
+
+      applyOwnershipColors();
+      updateSelectedRegionUI();
+      updateScoreboard();
+
+      if (selectedRegion) {
+        displayRegionInfo(selectedRegion);
+      }
+    } else {
+      console.error("The territoryWar/state document does not exist.");
     }
+  },
+  (error) => {
+    console.error("FIRESTORE LISTENER ERROR:", error);
+    alert("Firestore error: " + error.message);
   }
-});
+);
 
 /* =========================
    MAP EVENTS
